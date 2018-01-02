@@ -4,6 +4,7 @@ using Yun.Authorization.Roles;
 using Yun.Authorization.Users;
 using Yun.MultiTenancy;
 using Yun.Shares;
+using Yun.Storage;
 
 namespace Yun.EntityFrameworkCore
 {
@@ -18,6 +19,7 @@ namespace Yun.EntityFrameworkCore
         /// 分类
         /// </summary>
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
         public YunDbContext(DbContextOptions<YunDbContext> options)
             : base(options)
         {

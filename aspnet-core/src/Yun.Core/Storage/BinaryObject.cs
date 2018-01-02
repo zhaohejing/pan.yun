@@ -10,7 +10,7 @@ namespace Yun.Storage
     /// <summary>
     /// 文件存储
     /// </summary>
-    [Table("sys_objectstorage")]
+    [Table("BinaryObject")]
     public sealed class BinaryObject : Entity<Guid>
     {
         /// <summary>
