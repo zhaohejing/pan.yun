@@ -6,7 +6,7 @@ namespace Yun.Authorization.Users
 {
     public class User : AbpUser<User>
     {
-        public const string DefaultPassword = "123qwe";
+        public const string DefaultPassword = "1234567";
 
         public static string CreateRandomPassword()
         {

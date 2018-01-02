@@ -8,7 +8,7 @@ namespace Yun.EntityFrameworkCore
 {
     public class YunDbContext : AbpZeroDbContext<Tenant, Role, User, YunDbContext>
     {
-        /* Define a DbSet for each entity of the application */
+        /* 定义 实体idbset 仓储 */
         
         public YunDbContext(DbContextOptions<YunDbContext> options)
             : base(options)

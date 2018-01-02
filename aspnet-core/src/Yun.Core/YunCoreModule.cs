@@ -19,17 +19,17 @@ namespace Yun
         {
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
 
-            // Declare entity types
+            // 声明角色用户和租户类型
             Configuration.Modules.Zero().EntityTypes.Tenant = typeof(Tenant);
             Configuration.Modules.Zero().EntityTypes.Role = typeof(Role);
             Configuration.Modules.Zero().EntityTypes.User = typeof(User);
 
             YunLocalizationConfigurer.Configure(Configuration.Localization);
 
-            // Enable this line to create a multi-tenant application.
+            // 是否启用多租户系统
             Configuration.MultiTenancy.IsEnabled = YunConsts.MultiTenancyEnabled;
 
-            // Configure roles
+            // 配置角色管理
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
             Configuration.Settings.Providers.Add<AppSettingProvider>();

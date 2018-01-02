@@ -28,7 +28,7 @@ namespace Yun
             var user = UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
             if (user == null)
             {
-                throw new Exception("There is no current user!");
+                throw new Exception("当前用户未登陆系统!");
             }
 
             return user;
