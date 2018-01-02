@@ -80,3 +80,16 @@ INFO  2018-01-02 15:11:00,765 [1    ] Yun.Migrator.Log                         -
 INFO  2018-01-02 15:11:00,949 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
 DEBUG 2018-01-02 15:11:03,033 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2018-01-02 15:11:03,034 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-02 15:55:55,935 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-02 15:55:56,121 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-02 15:55:56,499 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,503 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,503 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,504 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,504 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,505 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,505 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,506 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,506 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 15:55:56,512 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-02 15:55:57,097 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null

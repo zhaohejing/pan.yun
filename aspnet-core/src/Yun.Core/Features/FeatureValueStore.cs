@@ -27,4 +27,15 @@ namespace Yun.Features
         {
         }
     }
+    /// <summary>
+    /// 配置文件对象信息
+    /// </summary>
+    public class ApplicationConfiguration
+    {
+        #region 属性成员
+        public string ServerRootAddress { get; set; }
+        public string ClientRootAddress { get; set; }
+        public string CorsOrigins { get; set; }
+        #endregion
+    }
 }

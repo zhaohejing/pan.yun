@@ -14,6 +14,7 @@ using Abp.Extensions;
 using Yun.Authentication.JwtBearer;
 using Yun.Configuration;
 using Yun.Identity;
+using Yun.Features;
 
 namespace Yun.Web.Host.Startup
 {
@@ -72,6 +73,7 @@ namespace Yun.Web.Host.Startup
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
+            services.Configure<ApplicationConfiguration>(_appConfiguration.GetSection("App"));
             // Configure Abp and Dependency Injection
             return services.AddAbp<YunWebHostModule>(
                 // Configure Log4Net logging
@@ -120,24 +122,5 @@ namespace Yun.Web.Host.Startup
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Yun API V1");
             }); // URL: /swagger
         }
-
-#if FEATURE_SIGNALR
-        private static void ConfigureOwinServices(IAppBuilder app)
-        {
-            app.Properties["host.AppName"] = "Yun";
-
-            app.UseAbp();
-            
-            app.Map("/signalr", map =>
-            {
-                map.UseCors(CorsOptions.AllowAll);
-                var hubConfiguration = new HubConfiguration
-                {
-                    EnableJSONP = true
-                };
-                map.RunSignalR(hubConfiguration);
-            });
-        }
-#endif
     }
 }
