@@ -1,21 +1,33 @@
-# play
+# Introduction
 
-> A Vue.js project
+This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
 
-## Build Setup
+1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
+2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
+ 
+User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
+ 
+# Download
 
-``` bash
-# install dependencies
-npm install
+Create & download your project from https://aspnetboilerplate.com/Templates
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Screenshots
 
-# build for production with minification
-npm run build
+#### Sample Dashboard Page
+![](_screenshots/module-zero-core-template-ui-home.png)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+#### User Creation Modal
+![](_screenshots/module-zero-core-template-ui-user-create-modal.png)
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### Login Page
+
+![](_screenshots/module-zero-core-template-ui-login.png)
+
+# Documentation
+
+* [ASP.NET Core MVC & jQuery version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core)
+* [ASP.NET Core & Angular  version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular)
+
+# License
+
+[MIT](LICENSE).

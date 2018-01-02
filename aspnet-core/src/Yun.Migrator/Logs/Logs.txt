@@ -1,0 +1,57 @@
+﻿DEBUG 2018-01-02 14:16:14,374 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-02 14:16:14,737 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-02 14:16:15,250 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,274 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,274 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,275 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,276 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,276 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,276 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,278 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,278 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:15,285 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-02 14:16:15,977 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:16:16,885 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-02 14:16:16,904 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-02 14:16:16,912 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-02 14:16:16,914 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-02 14:16:17,146 [1    ] Yun.Migrator.Log                         - Host database: Server=127.0.0.1;Database=YunPan;User Id=sa;Password=zwy0410;
+INFO  2018-01-02 14:16:17,146 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-02 14:16:26,618 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-02 14:16:42,582 [1    ] Yun.Migrator.Log                         - HOST database migration completed.
+INFO  2018-01-02 14:16:42,582 [1    ] Yun.Migrator.Log                         - --------------------------------------------------------
+INFO  2018-01-02 14:16:42,641 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
+DEBUG 2018-01-02 14:16:45,466 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-02 14:16:45,467 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-02 14:34:36,488 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-02 14:34:36,659 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-02 14:34:36,942 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,945 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,946 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,946 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,946 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,946 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,947 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,948 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,948 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:36,953 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-02 14:34:37,363 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-02 14:34:38,119 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-02 14:34:38,131 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-02 14:34:38,135 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-02 14:34:38,140 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-02 14:34:38,331 [1    ] Yun.Migrator.Log                         - Host database: Data Source=103.45.102.47;port=3306;Initial Catalog=yunpan;uid=root;password=Dizhu2017;;Charset=utf8;
+INFO  2018-01-02 14:34:38,331 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-02 14:34:43,963 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-02 14:34:44,070 [1    ] Yun.Migrator.Log                         - An error occured during migration of host database:
+INFO  2018-01-02 14:34:44,109 [1    ] Yun.Migrator.Log                         - System.TypeLoadException: Method 'Clone' in type 'Microsoft.EntityFrameworkCore.Internal.MySqlOptionsExtension' from assembly 'Pomelo.EntityFrameworkCore.MySql, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+   at Microsoft.EntityFrameworkCore.MySqlDbContextOptionsExtensions.UseMySql[TContext]
+   at Yun.EntityFrameworkCore.YunDbContextConfigurer.Configure(DbContextOptionsBuilder`1 builder, String connectionString) in D:\mywork\3.4.1\aspnet-core\src\Yun.EntityFrameworkCore\EntityFrameworkCore\YunDbContextConfigurer.cs:line 10
+   at Yun.EntityFrameworkCore.YunEntityFrameworkModule.<>c.<PreInitialize>b__8_0(AbpDbContextConfiguration`1 options) in D:\mywork\3.4.1\aspnet-core\src\Yun.EntityFrameworkCore\EntityFrameworkCore\YunEntityFrameworkModule.cs:line 31
+   at Abp.EntityFrameworkCore.DefaultDbContextResolver.CreateOptions[TDbContext](String connectionString, DbConnection existingConnection) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\DefaultDbContextResolver.cs:line 90
+   at Abp.EntityFrameworkCore.DefaultDbContextResolver.Resolve[TDbContext](String connectionString, DbConnection existingConnection) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\DefaultDbContextResolver.cs:line 50
+   at Abp.Zero.EntityFrameworkCore.AbpZeroDbMigrator`1.CreateOrMigrate(AbpTenantBase tenant, Action`1 seedAction) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore.EntityFrameworkCore\Zero\EntityFrameworkCore\AbpZeroDbMigrator.cs:line 71
+   at Yun.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) in D:\mywork\3.4.1\aspnet-core\src\Yun.Migrator\MultiTenantMigrateExecuter.cs:line 62
+INFO  2018-01-02 14:34:44,109 [1    ] Yun.Migrator.Log                         - Canceled migrations.
+DEBUG 2018-01-02 14:35:02,281 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-02 14:35:02,282 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

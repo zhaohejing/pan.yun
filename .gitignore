@@ -1,14 +1,8 @@
-.DS_Store
-node_modules/
-/dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+# IDEs and editors
+.vs/
+obj/
+bin/
+aspnet-core/src/Yun.Web.Host/App_Data/Logs/
+aspnet-core/src/Yun.Web.Mvc/App_Data/Logs/
