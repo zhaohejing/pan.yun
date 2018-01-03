@@ -19,17 +19,27 @@ namespace Yun.Shares
         /// <summary>
         /// 新增或更改分享
         /// </summary>
-        Task CreateOrUpdateSchedulingAsync(CreateOrUpdateShareInput input);
+        Task CreateOrUpdateShareAsync(CreateOrUpdateShareInput input);
 
         /// <summary>
         /// 删除分享
         /// </summary>
-        Task DeleteSchedulingAsync(EntityDto<int> input);
+        Task DeleteShareAsync(EntityDto<int> input);
+
+        /// <summary>
+        /// 评论分享
+        /// </summary>
+        Task CommentShare(CommentInput input);
 
         /// <summary>
         /// 批量删除分享
         /// </summary>
-        Task BatchDeleteSchedulingAsync(List<int> input);
+        Task BatchDeleteShareAsync(List<int> input);
+
+        /// <summary>
+        /// 获取分享详情带评论
+        /// </summary>
+        Task<ShareDetail> GetShareDetailAsync(EntityDto<int> input);
 
         /// <summary>
         /// 获取分享详情

@@ -19,6 +19,7 @@ namespace Yun.EntityFrameworkCore
         /// 分类
         /// </summary>
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
         public YunDbContext(DbContextOptions<YunDbContext> options)
             : base(options)

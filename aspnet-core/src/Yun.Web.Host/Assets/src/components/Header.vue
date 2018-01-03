@@ -1,6 +1,7 @@
 <template>
     <mu-appbar class="header"  :title="title">
       <mu-icon-button  @click="toggle" icon="menu" slot="left" />
+       <mu-icon-button @click="gotoshare" icon="add" slot="right" />
       <mu-icon-menu :value="theme" @change="changetheme" icon="more_vert" slot="right">
         <mu-menu-item title="Light" value="light"/>
         <mu-menu-item title="Dark" value="dark"/>
@@ -34,6 +35,13 @@ export default {
     ...mapMutations(["updateOpen"]),
     toggle() {
       this.updateOpen(!this.open);
+    },
+    gotoshare() {
+      if (!sessionStorage.getItem("token")) {
+        this.$router.push({ path: "/login" });
+        return;
+      }
+      this.$router.push({ path: "/share" });
     },
     changetheme(item) {
       this.theme = item;

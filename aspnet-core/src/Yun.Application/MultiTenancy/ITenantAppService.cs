@@ -4,7 +4,8 @@ using Yun.MultiTenancy.Dto;
 
 namespace Yun.MultiTenancy
 {
-    public interface ITenantAppService : IAsyncCrudAppService<TenantDto, int, PagedResultRequestDto, CreateTenantDto, TenantDto>
+    public interface ITenantAppService : 
+        IAsyncCrudAppService<TenantDto, int, PagedResultRequestDto, CreateTenantDto, TenantDto>
     {
     }
 }

@@ -22,14 +22,20 @@ namespace Yun.Shares
     /// <summary>
     /// 分享service
     /// </summary>
-    [AbpAuthorize(PermissionNames.Pages_Shares)]
     public class ShareAppService : YunAppServiceBase, IShareAppService
     {
         private readonly IRepository<Share> _shareRepository;
+        private readonly IRepository<Comment> _commentRepository;
 
-        public ShareAppService(IRepository<Share> shareRepository)
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="shareRepository"></param>
+        /// <param name="commentRepository"></param>
+        public ShareAppService(IRepository<Share> shareRepository, IRepository<Comment> commentRepository)
         {
             _shareRepository = shareRepository;
+            _commentRepository = commentRepository;
         }
 
         #region 实体的自定义扩展方法
@@ -52,8 +58,17 @@ namespace Yun.Shares
                 .OrderBy(input.Sorting)
                 .PageBy(input)
                 .ToListAsync();
-            var result = shares.MapTo<List<ShareListDto>>();
+            var result = ObjectMapper.Map<List<ShareListDto>>(shares);
             return new PagedResultDto<ShareListDto>(count, result);
+        }
+
+        /// <summary>
+        /// 获取分享详情带评论
+        /// </summary>
+        public async Task<ShareDetail> GetShareDetailAsync(EntityDto<int> input)
+        {
+            var entity = await _shareRepository.GetAsync(input.Id);
+            return ObjectMapper.Map<ShareDetail>(entity);
         }
 
         /// <summary>
@@ -62,29 +77,46 @@ namespace Yun.Shares
         public async Task<ShareListDto> GetShareByIdAsync(EntityDto<int> input)
         {
             var entity = await _shareRepository.GetAsync(input.Id);
-
             return entity.MapTo<ShareListDto>();
         }
+
 
         /// <summary>
         /// 新增或更改分享
         /// </summary>
-        public async Task CreateOrUpdateSchedulingAsync(CreateOrUpdateShareInput input)
+        [AbpAuthorize]
+        public async Task CreateOrUpdateShareAsync(CreateOrUpdateShareInput input)
         {
             if (input.ShareEditDto.Id.HasValue)
             {
-                await UpdateSchedulingAsync(input.ShareEditDto);
+                await UpdateShareAsync(input.ShareEditDto);
             }
             else
             {
-                await CreateSchedulingAsync(input.ShareEditDto);
+                await CreateShareAsync(input.ShareEditDto);
             }
+        }
+
+        /// <summary>
+        /// 评论分享
+        /// </summary>
+        [AbpAuthorize]
+        public async Task CommentShare(CommentInput input)
+        {
+            var model = new Comment()
+            {
+                Content = input.Content,
+                From = input.From.IsNullOrWhiteSpace() ? "游客" : input.From,
+                FromImage = input.FromImage,
+                ShareId = input.ShareId
+            };
+            await _commentRepository.InsertAsync(model);
         }
 
         /// <summary>
         /// 新增分享
         /// </summary>
-        protected virtual async Task<ShareEditDto> CreateSchedulingAsync(ShareEditDto input)
+        protected virtual async Task<ShareEditDto> CreateShareAsync(ShareEditDto input)
         {
             var entity = input.MapTo<Share>();
             entity = await _shareRepository.InsertAsync(entity);
@@ -94,7 +126,7 @@ namespace Yun.Shares
         /// <summary>
         /// 编辑分享
         /// </summary>
-        protected virtual async Task UpdateSchedulingAsync(ShareEditDto input)
+        protected virtual async Task UpdateShareAsync(ShareEditDto input)
         {
             var entity = await _shareRepository.GetAsync(input.Id.Value);
             input.MapTo(entity);
@@ -104,7 +136,9 @@ namespace Yun.Shares
         /// <summary>
         /// 删除分享
         /// </summary>
-        public async Task DeleteSchedulingAsync(EntityDto<int> input)
+        [AbpAuthorize]
+
+        public async Task DeleteShareAsync(EntityDto<int> input)
         {
             await _shareRepository.DeleteAsync(input.Id);
         }
@@ -112,7 +146,9 @@ namespace Yun.Shares
         /// <summary>
         /// 批量删除分享
         /// </summary>
-        public async Task BatchDeleteSchedulingAsync(List<int> input)
+        [AbpAuthorize]
+
+        public async Task BatchDeleteShareAsync(List<int> input)
         {
             await _shareRepository.DeleteAsync(s => input.Contains(s.Id));
         }
