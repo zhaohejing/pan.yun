@@ -12,7 +12,6 @@
     <RootNamespace>Yun</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\Yun-zh-CN.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\Yun.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -19,22 +19,29 @@ namespace Yun.Authorization
             {
                 case AbpLoginResultType.Success:
                     return new Exception("Don't call this method with a success result!");
+
                 case AbpLoginResultType.InvalidUserNameOrEmailAddress:
                 case AbpLoginResultType.InvalidPassword:
-                    return new UserFriendlyException(L("LoginFailed"), L("InvalidUserNameOrPassword"));
+                    return new UserFriendlyException("登陆失败", "用户名或密码错误");
+
                 case AbpLoginResultType.InvalidTenancyName:
-                    return new UserFriendlyException(L("LoginFailed"), L("ThereIsNoTenantDefinedWithName{0}", tenancyName));
+                    return new UserFriendlyException("登陆失败", $"租户不存在{tenancyName}");
+
                 case AbpLoginResultType.TenantIsNotActive:
-                    return new UserFriendlyException(L("LoginFailed"), L("TenantIsNotActive", tenancyName));
+                    return new UserFriendlyException("登陆失败", "租户被禁用");
+
                 case AbpLoginResultType.UserIsNotActive:
-                    return new UserFriendlyException(L("LoginFailed"), L("UserIsNotActiveAndCanNotLogin", usernameOrEmailAddress));
+                    return new UserFriendlyException("登陆失败", "用户被禁用");
+
                 case AbpLoginResultType.UserEmailIsNotConfirmed:
-                    return new UserFriendlyException(L("LoginFailed"), L("UserEmailIsNotConfirmedAndCanNotLogin"));
+                    return new UserFriendlyException("登陆失败", "用户邮箱尚未验证");
+
                 case AbpLoginResultType.LockedOut:
-                    return new UserFriendlyException(L("LoginFailed"), L("UserLockedOutMessage"));
+                    return new UserFriendlyException("登陆失败", "用户被锁定");
+
                 default: // Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
                     Logger.Warn("Unhandled login fail reason: " + result);
-                    return new UserFriendlyException(L("LoginFailed"));
+                    return new UserFriendlyException("登陆失败");
             }
         }
 
@@ -47,17 +54,22 @@ namespace Yun.Authorization
                 case AbpLoginResultType.InvalidUserNameOrEmailAddress:
                 case AbpLoginResultType.InvalidPassword:
                     return L("InvalidUserNameOrPassword");
+
                 case AbpLoginResultType.InvalidTenancyName:
                     return L("ThereIsNoTenantDefinedWithName{0}", tenancyName);
+
                 case AbpLoginResultType.TenantIsNotActive:
                     return L("TenantIsNotActive", tenancyName);
+
                 case AbpLoginResultType.UserIsNotActive:
                     return L("UserIsNotActiveAndCanNotLogin", usernameOrEmailAddress);
+
                 case AbpLoginResultType.UserEmailIsNotConfirmed:
                     return L("UserEmailIsNotConfirmedAndCanNotLogin");
+
                 default: // Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
                     Logger.Warn("Unhandled login fail reason: " + result);
-                    return L("LoginFailed");
+                    return "登陆失败";
             }
         }
     }
