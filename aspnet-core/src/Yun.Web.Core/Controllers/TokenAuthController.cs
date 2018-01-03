@@ -137,11 +137,10 @@ namespace Yun.Controllers
         {
             var user = await _userRegistrationManager.RegisterAsync(
                 externalUser.Name,
-                externalUser.Surname,
                 externalUser.EmailAddress,
                 externalUser.EmailAddress,
                 Authorization.Users.User.CreateRandomPassword(),
-                true
+                ""
             );
 
             user.Logins = new List<UserLogin>

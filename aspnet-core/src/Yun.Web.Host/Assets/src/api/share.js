@@ -17,9 +17,9 @@ export function share(data) {
 }
 export function shareDetail(data) {
   return fetch({
-    url: '/api/services/app/Share/GetShareDetailAsync',
-    method: 'get',
-    data
+    url: '/api/services/app/Share/GetShareDetailAsync?id=' + data,
+    method: 'get'
+
   });
 }
 export function inserShare(data) {

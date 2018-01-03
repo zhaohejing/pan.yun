@@ -7,6 +7,11 @@ namespace Yun.Authorization.Users
     public class User : AbpUser<User>
     {
         public const string DefaultPassword = "1234567";
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public string HeadImage { get; set; }
+        private new string Surname { get; set; }
 
         public static string CreateRandomPassword()
         {

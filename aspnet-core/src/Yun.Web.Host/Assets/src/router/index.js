@@ -38,6 +38,10 @@ export default new Router({
         path: '/share',
         name: 'share',
         component: r => require.ensure([], () => r(require("views/movie/share")), "share")
+      }, {
+        path: '/detail/:id',
+        name: 'detail',
+        component: r => require.ensure([], () => r(require("views/movie/detail")), "detail")
       }]
     }
   ]

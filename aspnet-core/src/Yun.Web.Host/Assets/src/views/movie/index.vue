@@ -3,7 +3,7 @@
     <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh" />
     <mu-list>
       <mu-sub-header>最新分享</mu-sub-header>
-      <mu-list-item :key="index" v-for="item,index in list" :title="item.title" :describeText="item.time">
+      <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list" :title="item.title" :describeText="item.time">
         <mu-avatar :src="item.image" slot="leftAvatar" />
         <mu-icon value="info" slot="right" />
       </mu-list-item>
@@ -141,6 +141,9 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    gotodetail(item) {
+      this.$router.push({ path: "/detail/" + item.id });
     }
   }
 };

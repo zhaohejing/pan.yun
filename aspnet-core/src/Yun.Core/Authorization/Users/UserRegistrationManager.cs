@@ -36,22 +36,28 @@ namespace Yun.Authorization.Users
 
             AbpSession = NullAbpSession.Instance;
         }
-
-        public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed)
+        /// <summary>
+        /// 注册账户
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="emailAddress"></param>
+        /// <param name="userName"></param>
+        /// <param name="plainPassword"></param>
+        /// <param name="headImage"></param>
+        /// <returns></returns>
+        public async Task<User> RegisterAsync(string name, string emailAddress, string userName, string plainPassword, string headImage)
         {
             CheckForTenant();
-
             var tenant = await GetActiveTenantAsync();
-
             var user = new User
             {
                 TenantId = tenant.Id,
                 Name = name,
-                Surname = surname,
                 EmailAddress = emailAddress,
                 IsActive = true,
                 UserName = userName,
-                IsEmailConfirmed = isEmailConfirmed,
+                HeadImage = headImage,
+                IsEmailConfirmed = false,
                 Roles = new List<UserRole>()
             };
 

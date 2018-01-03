@@ -1,83 +1,100 @@
 <template>
-<div class="demo-vsteper-container">
-  <mu-stepper :activeStep="activeStep" orientation="vertical">
-    <mu-step>
-      <mu-step-label>
-        选择活动地点
-      </mu-step-label>
-      <mu-step-content>
-        <p>
-          在附近选择一个活动的地点, 最好靠近地铁站公交站，已方便交通，附近设施应尽量完善，最重要的是有Wifi
-        </p>
-        <mu-raised-button label="下一步" class="demo-step-button" @click="handleNext" primary/>
-      </mu-step-content>
-    </mu-step>
-    <mu-step>
-      <mu-step-label>
-        创建一个群组
-      </mu-step-label>
-      <mu-step-content>
-        <p>
-          创建群组，50人左右，以18-25单身青年为主。。。。。
-        </p>
-        <mu-raised-button label="下一步" class="demo-step-button" @click="handleNext" primary/>
-        <mu-flat-button label="上一步" class="demo-step-button" @click="handlePrev"/>
-      </mu-step-content>
-    </mu-step>
-    <mu-step>
-      <mu-step-label>
-        宣传活动
-      </mu-step-label>
-      <mu-step-content>
-        <p>
-          多在群里发消息宣传宣传，有事没事多在群里唠唠嗑，确定的话就ok拉
-        </p>
-        <mu-raised-button label="完成" class="demo-step-button" @click="handleNext" primary/>
-        <mu-flat-button label="上一步" class="demo-step-button" @click="handlePrev"/>
-      </mu-step-content>
-    </mu-step>
-  </mu-stepper>
-  <p v-if="finished">
-    都完成啦!<a href="javascript:;" @click="reset">点这里</a>可以重置
-  </p>
-</div>
+  <div>
+    <mu-flexbox>
+      <mu-flexbox-item class="flex-demo">
+      </mu-flexbox-item>
+      <mu-flexbox-item class="flex-demo">
+        <mu-paper class="demo-paper" :zDepth="2" />
+      </mu-flexbox-item>
+      <mu-flexbox-item class="flex-demo">
+      </mu-flexbox-item>
+    </mu-flexbox>
+    <mu-divider />
+
+    <div class="login-container">
+      <mu-text-field hintText="账户" v-model="model.userName" type="text" icon="phone" />
+      <br/>
+      <mu-text-field hintText="密码" v-model="model.password" type="password" icon="phone" />
+      <br/>
+      <mu-text-field hintText="昵称" v-model="model.name" type="text" icon="phone" />
+      <br/>
+      <mu-text-field hintText="邮箱" v-model="model.emailAddress" type="text" icon="phone" />
+      <br/>
+
+    </div>
+
+    <mu-flexbox>
+      <mu-flexbox-item>
+        <mu-raised-button class="demo-raised-button" @click="dore" label="注册" backgroundColor="#80deea" />
+      </mu-flexbox-item>
+      <mu-flexbox-item>
+        <mu-raised-button class="demo-raised-button" @click="back" label="返回" backgroundColor="#d1c4e9" />
+      </mu-flexbox-item>
+    </mu-flexbox>
+  </div>
+
 </template>
 
 <script>
+import { register } from "api/login";
 export default {
   data() {
     return {
-      activeStep: 0
+      model: {
+        name: "",
+        userName: "",
+        emailAddress: "",
+        password: "",
+        headImageUrl: ""
+      }
     };
   },
-  computed: {
-    finished() {
-      return this.activeStep > 2;
-    }
-  },
   methods: {
-    handleNext() {
-      this.activeStep++;
+    dore() {
+      register(this.model)
+        .then(r => {
+          if (r && r.result) {
+            this.$router.push({
+              path: "/login"
+            });
+          } else {
+            console.log(r);
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
-    handlePrev() {
-      this.activeStep--;
-    },
-    reset() {
-      this.activeStep = 0;
+    back() {
+      this.$router.push({
+        path: "/login"
+      });
     }
   }
 };
 </script>
-
-<style lang="css">
-.demo-vsteper-container {
-  max-width: 380px;
-  max-height: 400px;
-  margin: auto;
+<style scopd>
+.demo-paper {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
-.demo-step-button {
-  margin-top: 12px;
-  margin-right: 12px;
+.login-container {
+  margin-top: 30px;
+}
+
+.demo-raised-button-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.demo-raised-button {
+  margin: 12px;
+  margin-left: 20px;
 }
 </style>

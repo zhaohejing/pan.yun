@@ -143,3 +143,53 @@ INFO  2018-01-03 15:37:35,046 [1    ] Yun.Migrator.Log                         -
 INFO  2018-01-03 15:37:35,241 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
 DEBUG 2018-01-03 15:38:10,939 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2018-01-03 15:38:10,940 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-03 17:35:28,791 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-03 17:35:29,215 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-03 17:35:30,367 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,375 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,376 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,376 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,377 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,377 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,378 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,379 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,379 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:30,386 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-03 17:35:31,142 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:35:32,419 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-03 17:35:32,442 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-03 17:35:32,450 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-03 17:35:32,451 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-03 17:35:32,786 [1    ] Yun.Migrator.Log                         - Host database: Data Source=103.45.102.47;port=3306;Initial Catalog=yunpan;uid=root;password=Dizhu2017;;Charset=utf8;
+INFO  2018-01-03 17:35:32,787 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-03 17:35:35,851 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-03 17:35:47,942 [1    ] Yun.Migrator.Log                         - HOST database migration completed.
+INFO  2018-01-03 17:35:47,943 [1    ] Yun.Migrator.Log                         - --------------------------------------------------------
+INFO  2018-01-03 17:35:48,191 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
+DEBUG 2018-01-03 17:35:50,138 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-03 17:35:50,139 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-03 17:49:37,071 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-03 17:49:37,399 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-03 17:49:38,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,126 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,126 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,128 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,129 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,129 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:38,133 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-03 17:49:38,938 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-03 17:49:40,092 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-03 17:49:40,114 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-03 17:49:40,123 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-03 17:49:40,123 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-03 17:49:40,464 [1    ] Yun.Migrator.Log                         - Host database: Data Source=103.45.102.47;port=3306;Initial Catalog=yunpan;uid=root;password=Dizhu2017;;Charset=utf8;
+INFO  2018-01-03 17:49:40,465 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-03 17:53:10,097 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-03 17:53:18,984 [1    ] Yun.Migrator.Log                         - HOST database migration completed.
+INFO  2018-01-03 17:53:18,984 [1    ] Yun.Migrator.Log                         - --------------------------------------------------------
+INFO  2018-01-03 17:53:19,154 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
+DEBUG 2018-01-03 17:53:22,505 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-03 17:53:22,506 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

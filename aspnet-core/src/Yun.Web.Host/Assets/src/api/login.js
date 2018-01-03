@@ -7,10 +7,11 @@ export function Authenticate(data) {
   });
 }
 
-export function logout() {
+export function register(data) {
   return fetch({
-    url: '/login/logout',
-    method: 'post'
+    url: '/api/services/app/Account/Register',
+    method: 'post',
+    data
   });
 }
 
