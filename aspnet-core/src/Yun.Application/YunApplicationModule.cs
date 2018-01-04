@@ -13,6 +13,8 @@ namespace Yun
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<YunAuthorizationProvider>();
+            //Adding custom AutoMapper configuration
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(CustomDtoMapper.CreateMappings);
         }
 
         public override void Initialize()

@@ -12,9 +12,9 @@
     <mu-divider />
 
     <div class="login-container">
-      <mu-text-field hintText="账户" v-model="model.userNameOrEmailAddress" type="text" icon="phone" />
+      <mu-text-field hintText="账户" v-model="model.userNameOrEmailAddress" type="text" icon="account_box" />
       <br/>
-      <mu-text-field hintText="密码" v-model="model.password" type="password" icon="phone" />
+      <mu-text-field hintText="密码" v-model="model.password" type="password" icon="input" />
       <br/>
     </div>
 
@@ -56,11 +56,17 @@ export default {
             sessionStorage.setItem("userId", r.result.userId);
             this.$router.push({ path: "/movie" });
           } else {
-            console.log(r);
+            this.$store.dispatch("show", {
+              state: true,
+              text: r.error.message
+            });
           }
         })
         .catch(e => {
-          console.log(e);
+          this.$store.dispatch("show", {
+            state: true,
+            text: e.error.message
+          });
         });
     },
     register() {

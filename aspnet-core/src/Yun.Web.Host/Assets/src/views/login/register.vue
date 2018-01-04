@@ -12,13 +12,13 @@
     <mu-divider />
 
     <div class="login-container">
-      <mu-text-field hintText="账户" v-model="model.userName" type="text" icon="phone" />
+      <mu-text-field hintText="账户" v-model="model.userName" type="text" icon="account_box" />
       <br/>
-      <mu-text-field hintText="密码" v-model="model.password" type="password" icon="phone" />
+      <mu-text-field hintText="密码" v-model="model.password" type="password" icon="security" />
       <br/>
       <mu-text-field hintText="昵称" v-model="model.name" type="text" icon="phone" />
       <br/>
-      <mu-text-field hintText="邮箱" v-model="model.emailAddress" type="text" icon="phone" />
+      <mu-text-field hintText="邮箱" v-model="model.emailAddress" type="text" icon="email" />
       <br/>
 
     </div>

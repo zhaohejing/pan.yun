@@ -7,7 +7,13 @@ export function shares(data) {
     data
   });
 }
-
+export function categorys(data) {
+  return fetch({
+    url: '/api/services/app/Category/GetPagedCategorysAsync',
+    method: 'get',
+    data
+  });
+}
 export function share(data) {
   return fetch({
     url: '/api/services/app/Share/GetShareByIdAsync',

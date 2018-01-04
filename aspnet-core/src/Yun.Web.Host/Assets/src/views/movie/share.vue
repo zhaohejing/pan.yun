@@ -1,42 +1,54 @@
 <template>
 <div>
-<mu-card>
-  <mu-card-header title="Myron Avatar" subTitle="sub title">
-    <mu-avatar src="static/images/uicon.jpg" slot="avatar"/>
-  </mu-card-header>
-  <mu-card-text>
-    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-    调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-    似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-    找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-  </mu-card-text>
-  <mu-card-actions>
-    <mu-flat-button label="赞"/>
-    <mu-flat-button label="评论"/>
-  </mu-card-actions>
-</mu-card>
- <mu-list>
-     <mu-list-item title="Myron Liu">
-      <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar"/>
-      <span slot="describe">
-        <span style="color: rgba(0, 0, 0, .87)">哇去</span><br/> 实在编不下去，这就是个demo
-      </span>
-    </mu-list-item>
-    <mu-divider inset/>
-    <mu-list-item title="Myron Liu">
-      <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar"/>
-      <span slot="describe">
-        <span style="color: rgba(0, 0, 0, .87)">哇去</span><br/> 实在编不下去，这就是个demo
-      </span>
-    </mu-list-item>
-     <mu-divider inset/>
-    <mu-list-item title="Myron Liu">
-      <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar"/>
-      <span slot="describe">
-        <span style="color: rgba(0, 0, 0, .87)">哇去</span><br/> 实在编不下去，这就是个demo
-      </span>
-    </mu-list-item>
-  </mu-list>
+    <mu-select-field v-model="model.categoryId" :labelFocusClass="['label-foucs']" label="请选择分类">
+    <mu-menu-item v-for="mo,index in list" :key="index" :value="mo.id" :title="mo.cateName" />
+  </mu-select-field>
+  <mu-text-field hintText="标题" v-model="model.title" type="text" icon="title"/><br/>
+  <mu-text-field hintText="内容" v-model="model.content" multiLine :rows="8" :rowsMax="8" icon="textsms"/><br/>
+  <mu-flexbox>
+    <mu-flexbox-item >
+    </mu-flexbox-item>
+    <mu-flexbox-item >
+   <mu-float-button icon="add" @click="sharesh"  class="demo-float-button"/>
+    </mu-flexbox-item>
+    <mu-flexbox-item >
+    </mu-flexbox-item>
+  </mu-flexbox>
 </div>
-
 </template>
+<script >
+import { inserShare, categorys } from "api/share";
+export default {
+  name: "share",
+  data() {
+    return {
+      list: [],
+      model: { id: null, title: "", content: "", categoryId: 0 }
+    };
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      categorys({ skipCount: 0, MaxResultCount: 100 }).then(r => {
+        if (r && r.result) {
+          this.list = r.result.items;
+        }
+      });
+    },
+    sharesh() {
+      inserShare({ shareEditDto: this.model }).then(r => {
+        if (r && r.success) {
+          this.$router.push({ path: "/movie" });
+        }
+      });
+    }
+  }
+};
+</script>
+<style>
+.demo-float-button {
+  margin-left: 20px;
+}
+</style>

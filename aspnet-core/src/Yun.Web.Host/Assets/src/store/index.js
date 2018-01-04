@@ -5,7 +5,9 @@ Vue.use(Vuex);
 const state = {
   title: "",
   loading: false,
-  open: false
+  open: false,
+  showToast: false,
+  showText: ""
 };
 
 const mutations = {
@@ -18,10 +20,22 @@ const mutations = {
   },
   updateOpen(state, value) {
     state.open = value
+  },
+  showToast(state, model) {
+    state.showToast = model.state
+    state.showText = model.text
+    setTimeout(() => {
+      state.showToast = false
+    }, 1000);
   }
 };
-
+const actions = {
+  show(context, model) {
+    context.commit('showToast', model)
+  }
+};
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  actions
 });
