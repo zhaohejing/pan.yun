@@ -3,7 +3,7 @@
     <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh" />
     <mu-list>
       <mu-sub-header>最新分享</mu-sub-header>
-      <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list" 
+      <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list"
       :title="'['+ item.categoryName +']'+item.title"
        :describeText="item.time">
         <mu-avatar :src="item.image" slot="leftAvatar" />
@@ -40,44 +40,44 @@ export default {
       this.refreshing = true;
       this.list = [
         {
-          image: "static/images/breakfast.jpg",
+          image: "static/images/uicon.jpg",
           title: "Breakfast",
           author: "Myron",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/burger.jpg",
+          image: "static/images/uicon.jpg",
           title: "Burger",
           author: "Linyu",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/camera.jpg",
+          image: "static/images/uicon.jpg",
           title: "Camera",
           author: "ruolin"
         },
         {
-          image: "static/images/hats.jpg",
+          image: "static/images/uicon.jpg",
           title: "Hats",
           author: "kakali"
         },
         {
-          image: "static/images/honey.jpg",
+          image: "static/images/uicon.jpg",
           title: "Honey",
           author: "yuyang"
         },
         {
-          image: "static/images/morning.jpg",
+          image: "static/images/uicon.jpg",
           title: "Morning",
           author: "mokayi"
         },
         {
-          image: "static/images/vegetables.jpg",
+          image: "static/images/uicon.jpg",
           title: "Vegetables",
           author: "a"
         },
         {
-          image: "static/images/water-plant.jpg",
+          image: "static/images/uicon.jpg",
           title: "water",
           author: "b"
         }
@@ -88,44 +88,44 @@ export default {
       this.loading = true;
       this.list.push([
         {
-          image: "static/images/breakfast.jpg",
+          image: "static/images/uicon.jpg",
           title: "Breakfast",
           author: "Myron",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/burger.jpg",
+          image: "static/images/uicon.jpg",
           title: "Burger",
           author: "Linyu",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/camera.jpg",
+          image: "static/images/uicon.jpg",
           title: "Camera",
           author: "ruolin"
         },
         {
-          image: "static/images/hats.jpg",
+          image: "static/images/uicon.jpg",
           title: "Hats",
           author: "kakali"
         },
         {
-          image: "static/images/honey.jpg",
+          image: "static/images/uicon.jpg",
           title: "Honey",
           author: "yuyang"
         },
         {
-          image: "static/images/morning.jpg",
+          image: "static/images/uicon.jpg",
           title: "Morning",
           author: "mokayi"
         },
         {
-          image: "static/images/vegetables.jpg",
+          image: "static/images/uicon.jpg",
           title: "Vegetables",
           author: "a"
         },
         {
-          image: "static/images/water-plant.jpg",
+          image: "static/images/uicon.jpg",
           title: "water",
           author: "b"
         }

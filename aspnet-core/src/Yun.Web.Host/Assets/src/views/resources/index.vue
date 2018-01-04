@@ -18,44 +18,44 @@ export default {
     return {
       list: [
         {
-          image: "static/images/breakfast.jpg",
+          image: "static/images/uicon.jpg",
           title: "[电影]十二金钗",
           author: "Myron",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/burger.jpg",
+          image: "static/images/uicon.jpg",
           title: "[电影]战狼2",
           author: "Linyu",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/camera.jpg",
+          image: "static/images/uicon.jpg",
           title: "[资源]怪物猎人物语",
           author: "ruolin"
         },
         {
-          image: "static/images/hats.jpg",
+          image: "static/images/uicon.jpg",
           title: "[资源]死或生5",
           author: "kakali"
         },
         {
-          image: "static/images/honey.jpg",
+          image: "static/images/uicon.jpg",
           title: "[音乐]逃",
           author: "yuyang"
         },
         {
-          image: "static/images/morning.jpg",
+          image: "static/images/uicon.jpg",
           title: "[电影]芳华",
           author: "mokayi"
         },
         {
-          image: "static/images/vegetables.jpg",
+          image: "static/images/uicon.jpg",
           title: "[网剧]杀不死1-2",
           author: "a"
         },
         {
-          image: "static/images/water-plant.jpg",
+          image: "static/images/uicon.jpg",
           title: "[网剧]白夜追凶",
           author: "b"
         }
@@ -76,44 +76,44 @@ export default {
       this.refreshing = true;
       this.list = [
         {
-          image: "static/images/breakfast.jpg",
+          image: "static/images/uicon.jpg",
           title: "Breakfast",
           author: "Myron",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/burger.jpg",
+          image: "static/images/uicon.jpg",
           title: "Burger",
           author: "Linyu",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/camera.jpg",
+          image: "static/images/uicon.jpg",
           title: "Camera",
           author: "ruolin"
         },
         {
-          image: "static/images/hats.jpg",
+          image: "static/images/uicon.jpg",
           title: "Hats",
           author: "kakali"
         },
         {
-          image: "static/images/honey.jpg",
+          image: "static/images/uicon.jpg",
           title: "Honey",
           author: "yuyang"
         },
         {
-          image: "static/images/morning.jpg",
+          image: "static/images/uicon.jpg",
           title: "Morning",
           author: "mokayi"
         },
         {
-          image: "static/images/vegetables.jpg",
+          image: "static/images/uicon.jpg",
           title: "Vegetables",
           author: "a"
         },
         {
-          image: "static/images/water-plant.jpg",
+          image: "static/images/uicon.jpg",
           title: "water",
           author: "b"
         }
@@ -124,44 +124,44 @@ export default {
       this.loading = true;
       this.list.push([
         {
-          image: "static/images/breakfast.jpg",
+          image: "static/images/uicon.jpg",
           title: "Breakfast",
           author: "Myron",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/burger.jpg",
+          image: "static/images/uicon.jpg",
           title: "Burger",
           author: "Linyu",
           time: "2018/01/02 12:37:00"
         },
         {
-          image: "static/images/camera.jpg",
+          image: "static/images/uicon.jpg",
           title: "Camera",
           author: "ruolin"
         },
         {
-          image: "static/images/hats.jpg",
+          image: "static/images/uicon.jpg",
           title: "Hats",
           author: "kakali"
         },
         {
-          image: "static/images/honey.jpg",
+          image: "static/images/uicon.jpg",
           title: "Honey",
           author: "yuyang"
         },
         {
-          image: "static/images/morning.jpg",
+          image: "static/images/uicon.jpg",
           title: "Morning",
           author: "mokayi"
         },
         {
-          image: "static/images/vegetables.jpg",
+          image: "static/images/uicon.jpg",
           title: "Vegetables",
           author: "a"
         },
         {
-          image: "static/images/water-plant.jpg",
+          image: "static/images/uicon.jpg",
           title: "water",
           author: "b"
         }
