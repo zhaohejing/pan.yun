@@ -5,7 +5,7 @@
       <mu-sub-header>最新分享</mu-sub-header>
       <mu-list-item :key="index" v-for="item,index in list" :title="item.title" :describeText="item.time">
         <mu-avatar :src="item.image" slot="leftAvatar" />
-        <mu-icon value="info" slot="right" />
+        <mu-icon value="details" slot="right" />
       </mu-list-item>
     </mu-list>
      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
