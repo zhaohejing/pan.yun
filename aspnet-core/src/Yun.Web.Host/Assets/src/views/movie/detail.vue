@@ -4,6 +4,7 @@
       <mu-card-header title="Myron Avatar" :subTitle="share.creationTime">
         <mu-avatar src="static/images/uicon.jpg" slot="avatar" />
       </mu-card-header>
+       <mu-card-title :title="'['+ share.categoryName +']'+share.title" />
       <mu-card-text>
         {{share.content}} </mu-card-text>
       <mu-card-actions>
@@ -12,29 +13,15 @@
       </mu-card-actions>
     </mu-card>
     <mu-list>
-      <mu-list-item title="Myron Liu">
+      <mu-list-item v-for="item,index in share.comments" :key="index" :title="item.from">
         <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar" />
         <span slot="describe">
-          <span style="color: rgba(0, 0, 0, .87)">哇去</span>
-          <br/> 实在编不下去，这就是个demo
+          <span style="color: rgba(0, 0, 0, .87)">{{item.creationTime | moment("YYYY/MM/DD HH:mm:ss")  }}</span>
+          <br/>
+          {{item.content}}
         </span>
       </mu-list-item>
       <mu-divider inset/>
-      <mu-list-item title="Myron Liu">
-        <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar" />
-        <span slot="describe">
-          <span style="color: rgba(0, 0, 0, .87)">哇去</span>
-          <br/> 实在编不下去，这就是个demo
-        </span>
-      </mu-list-item>
-      <mu-divider inset/>
-      <mu-list-item title="Myron Liu">
-        <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar" />
-        <span slot="describe">
-          <span style="color: rgba(0, 0, 0, .87)">哇去</span>
-          <br/> 实在编不下去，这就是个demo
-        </span>
-      </mu-list-item>
     </mu-list>
   </div>
 

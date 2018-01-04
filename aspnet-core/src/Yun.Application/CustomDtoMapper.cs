@@ -1,20 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Abp.Application.Editions;
-using Abp.Application.Features;
-using Abp.Auditing;
-using Abp.Authorization;
-using Abp.Authorization.Users;
-using Abp.Localization;
-using Abp.Notifications;
-using Abp.Organizations;
-using Abp.UI.Inputs;
-using AutoMapper;
-using Yun.Authorization.Roles;
-using Yun.Authorization.Users;
-using Yun.MultiTenancy;
-using Yun.Sessions.Dto;
+﻿using AutoMapper;
 using Yun.Shares;
 using Yun.Shares.Dtos;
 
@@ -27,7 +11,8 @@ namespace Yun
             //Inputs
             configuration.CreateMap<Share, ShareListDto>()
                 .ForMember(c => c.CategoryName, opt => opt.MapFrom(c => c.Category.CateName));
-
+            configuration.CreateMap<Share, ShareDetail>()
+                .ForMember(c => c.CategoryName, opt => opt.MapFrom(c => c.Category.CateName));
         }
     }
 }

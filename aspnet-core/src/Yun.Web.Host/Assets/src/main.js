@@ -7,9 +7,10 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-carbon.css'
 import router from './router'
 import store from './store'
+import vueMoment from 'vue-moment';
+Vue.use(vueMoment)
 Vue.use(MuseUI)
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

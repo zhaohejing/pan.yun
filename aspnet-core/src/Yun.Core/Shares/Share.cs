@@ -81,8 +81,5 @@ namespace Yun.Shares
         public string CateName { get; set; }
 
         public bool IsDeleted { get; set; }
-
-        [ForeignKey("CategoryId")]
-        public virtual ICollection<Share> Shares { get; set; }
     }
 }

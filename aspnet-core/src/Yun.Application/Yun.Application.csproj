@@ -11,7 +11,11 @@
     <RootNamespace>Yun</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <DefineConstants>FEATURE_SIGNALR_ASPNETCORE</DefineConstants>
+    <DefineConstants>FEATURE_SIGNALR_ASPNETCORE;RELEASE;NETCOREAPP2_0;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yun.Core\Yun.Core.csproj" />

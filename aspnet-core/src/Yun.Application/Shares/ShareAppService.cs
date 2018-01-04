@@ -51,7 +51,7 @@ namespace Yun.Shares
         /// </summary>
         public async Task<PagedResultDto<ShareListDto>> GetPagedSharesAsync(GetShareInput input)
         {
-            var query = ShareRepositoryAsNoTrack;
+            var query = _shareRepository.GetAllIncluding(c=>c.Category);
             query = query.WhereIf(!input.Filter.IsNullOrWhiteSpace(), c => c.Title.Contains(input.Filter));
             var count = await query.CountAsync();
             var shares = await query
@@ -67,8 +67,9 @@ namespace Yun.Shares
         /// </summary>
         public async Task<ShareDetail> GetShareDetailAsync(EntityDto<int> input)
         {
-            var entity = await _shareRepository.GetAsync(input.Id);
-            return ObjectMapper.Map<ShareDetail>(entity);
+            var entity = await _shareRepository.GetAllIncluding(c=>c.Category,c=>c.Comments).FirstOrDefaultAsync(c=>c.Id==input.Id);
+            var model = entity.MapTo<ShareDetail>();
+            return model;
         }
 
         /// <summary>

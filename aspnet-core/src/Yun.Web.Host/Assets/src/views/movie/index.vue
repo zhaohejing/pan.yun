@@ -3,7 +3,8 @@
     <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh" />
     <mu-list>
       <mu-sub-header>最新分享</mu-sub-header>
-      <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list" :title="item.title"
+      <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list" 
+      :title="'['+ item.categoryName +']'+item.title"
        :describeText="item.time">
         <mu-avatar :src="item.image" slot="leftAvatar" />
         <mu-icon value="details" slot="right" />
