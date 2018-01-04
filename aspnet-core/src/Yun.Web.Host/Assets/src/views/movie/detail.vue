@@ -51,6 +51,10 @@ export default {
         })
         .catch(e => {
           console.log(e);
+          this.$store.dispatch("show", {
+            state: true,
+            text: e.error.message
+          });
         });
     }
   }

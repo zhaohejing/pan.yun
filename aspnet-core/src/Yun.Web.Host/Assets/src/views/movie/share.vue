@@ -38,11 +38,18 @@ export default {
       });
     },
     sharesh() {
-      inserShare({ shareEditDto: this.model }).then(r => {
-        if (r && r.success) {
-          this.$router.push({ path: "/movie" });
-        }
-      });
+      inserShare({ shareEditDto: this.model })
+        .then(r => {
+          if (r && r.success) {
+            this.$router.push({ path: "/movie" });
+          }
+        })
+        .catch(e => {
+          this.$store.dispatch("show", {
+            state: true,
+            text: e.error.message
+          });
+        });
     }
   }
 };
