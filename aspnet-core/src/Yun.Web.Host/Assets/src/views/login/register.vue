@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <mu-flexbox>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
