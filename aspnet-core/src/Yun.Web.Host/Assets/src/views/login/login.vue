@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div >
     <mu-flexbox>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
@@ -76,10 +76,6 @@ export default {
 };
 </script>
 <style scopd>
-.container {
-  background-color: #006064;
-  height: 568px;
-}
 .demo-paper {
   display: inline-block;
   height: 100px;
