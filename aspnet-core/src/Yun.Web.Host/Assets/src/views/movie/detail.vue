@@ -1,7 +1,7 @@
 <template>
   <div>
     <mu-card>
-      <mu-card-header title="Myron Avatar" :subTitle="share.creationTime">
+      <mu-card-header :title="share.author" :subTitle="share.creationTime">
         <mu-avatar src="static/images/uicon.jpg" slot="avatar" />
       </mu-card-header>
        <mu-card-title :title="'['+ share.categoryName +']'+share.title" />
