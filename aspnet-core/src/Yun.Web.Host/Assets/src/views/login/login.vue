@@ -54,7 +54,7 @@ export default {
           if (r && r.result) {
             sessionStorage.setItem("token", r.result.accessToken);
             sessionStorage.setItem("userId", r.result.userId);
-            this.$router.push({ path: "/movie" });
+            this.$router.push({ path: "/resources" });
           } else {
             this.$store.dispatch("show", {
               state: true,

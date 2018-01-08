@@ -9,7 +9,7 @@
         {{share.content}} </mu-card-text>
       <mu-card-actions>
         <mu-icon-button icon="thumb_up" />
-        <mu-icon-button icon="comment" />
+        <mu-icon-button icon="comment" @click="open"/>
       </mu-card-actions>
     </mu-card>
     <mu-list>
@@ -23,15 +23,21 @@
       </mu-list-item>
       <mu-divider inset/>
     </mu-list>
+    <mu-dialog :open="dialog"  @close="close">
+    <mu-text-field multiLine :rows="6" :rowsMax="6"  label="评论" v-model="comment" labelFloat/><br/>
+    <mu-flat-button slot="actions" primary @click="save" label="确定"/>
+  </mu-dialog>
   </div>
 
 </template>
 
 <script>
-import { shareDetail } from "api/share";
+import { shareDetail, comment } from "api/share";
 export default {
   data() {
     return {
+      comment: "",
+      dialog: false,
       share: {},
       id: null
     };
@@ -41,6 +47,30 @@ export default {
     this.init();
   },
   methods: {
+    save() {
+      const model = {
+        shareId: this.share.id,
+        from: "张三",
+        fromImage: "",
+        content: this.comment
+      };
+      comment(model).then(r => {
+        if (r && r.success) {
+          this.dialog = false;
+          this.init();
+        }
+      });
+    },
+    open() {
+      if (!sessionStorage.getItem("token")) {
+        this.$router.push({ path: "/login" });
+        return;
+      }
+      this.dialog = true;
+    },
+    close() {
+      this.dialog = false;
+    },
     init() {
       shareDetail(this.id)
         .then(r => {
