@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Yun.Configuration;
 using Yun.Features;
 using Yun.Storage;
 
@@ -31,7 +26,8 @@ namespace Yun.Controllers
         [HttpPost]
         public async Task<JsonResult> UploadFile()
         {
-            string error = "", fileName = "", ext = "", path = "";
+            string error = "", fileName = "";
+            string path = "";
             Guid name = Guid.Empty;
             var host = _options.Value.ClientRootAddress;
             try
@@ -39,10 +35,10 @@ namespace Yun.Controllers
                 var oFile = Request.Form.Files["txt_file"];
                 Stream sm = oFile.OpenReadStream();
                 fileName = oFile.FileName;
-                var user = AbpSession.UserId.HasValue ? AbpSession.UserId.Value.ToString() : "zero";
-                var folder = $"{AppContext.BaseDirectory}/{user}/{DateTime.Now.ToString("yyyyMMdd")}/";
+                var user = AbpSession.UserId?.ToString() ?? "zero";
+                var folder = $"{AppContext.BaseDirectory}/{user}/{DateTime.Now:yyyyMMdd}/";
 
-                ext = oFile.FileName.Split(".").Last();
+                var ext = oFile.FileName.Split('.').Last();
                 name = Guid.NewGuid();
                 if (!Directory.Exists(folder))
                 {
@@ -56,7 +52,7 @@ namespace Yun.Controllers
                 sm.Read(buffer, 0, buffer.Length);
                 fs.Write(buffer, 0, buffer.Length);
                 fs.Dispose();
-                path = $"/{user}/{DateTime.Now.ToString("yyyyMMdd")}/{name.ToString()}.{ext}";
+                path = $"/{user}/{DateTime.Now:yyyyMMdd}/{name.ToString()}.{ext}";
                 //保存数据库
                 await _storager.SaveAsync(new BinaryObject()
                 {

@@ -42,6 +42,14 @@ namespace Yun.Shares.Dtos
     public class ShareDetail : EntityDto<int>
     {
         /// <summary>
+        /// 作者
+        /// </summary>
+        public string Author { get; set; }
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public string HeadImage { get; set; }
+        /// <summary>
         /// 标题
         /// </summary>
 

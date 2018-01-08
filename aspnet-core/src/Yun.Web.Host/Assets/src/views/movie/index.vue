@@ -5,7 +5,9 @@
       <mu-sub-header>最新分享</mu-sub-header>
       <mu-list-item @click="gotodetail(item)" :key="index" v-for="item,index in list" :title="'['+ item.categoryName +']'+item.title"
        :describeText="item.time">
-        <mu-avatar :src="item.image" slot="leftAvatar" />
+        <mu-icon v-if="item.categoryName=='游戏'" value="games" slot="left" />
+        <mu-icon v-else-if="item.categoryName=='电影'" value="movie" slot="left" />
+        <mu-icon v-else="item.categoryName=='音乐'" value="music" slot="left" />
         <mu-icon value="details" slot="right" />
       </mu-list-item>
     </mu-list>

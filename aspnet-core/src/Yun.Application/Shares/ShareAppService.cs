@@ -69,6 +69,14 @@ namespace Yun.Shares
         {
             var entity = await _shareRepository.GetAllIncluding(c=>c.Category,c=>c.Comments).FirstOrDefaultAsync(c=>c.Id==input.Id);
             var model = entity.MapTo<ShareDetail>();
+            if (model.Comments != null && model.Comments.Any())
+            {
+                model.Comments = model.Comments.OrderByDescending(c => c.CreationTime).ToList();
+            }
+            if (!entity.CreatorUserId.HasValue) return model;
+            var author =await UserManager.FindByIdAsync(entity.CreatorUserId.Value.ToString());
+            model.Author = author.Name;
+            model.HeadImage = author.HeadImage;
             return model;
         }
 

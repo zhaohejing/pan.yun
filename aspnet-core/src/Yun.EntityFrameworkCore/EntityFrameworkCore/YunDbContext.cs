@@ -2,6 +2,8 @@
 using Abp.Zero.EntityFrameworkCore;
 using Yun.Authorization.Roles;
 using Yun.Authorization.Users;
+using Yun.Chat;
+using Yun.Friendships;
 using Yun.MultiTenancy;
 using Yun.Shares;
 using Yun.Storage;
@@ -19,6 +21,8 @@ namespace Yun.EntityFrameworkCore
         /// 分类
         /// </summary>
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Friendship> Friendships { get; set; }
+        public virtual DbSet<ChatMessage> ChatMessages { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
         public YunDbContext(DbContextOptions<YunDbContext> options)
