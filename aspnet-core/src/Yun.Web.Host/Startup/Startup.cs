@@ -12,6 +12,7 @@ using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
 using Yun.Authentication.JwtBearer;
+using Yun.Chat.SignalR;
 using Yun.Configuration;
 using Yun.Identity;
 using Yun.Features;
@@ -35,7 +36,7 @@ namespace Yun.Web.Host.Startup
             services.AddMvc(
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(DefaultCorsPolicyName))
             );
-
+            services.AddSignalR();
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
             // Configure CORS for angular2 UI
@@ -89,6 +90,8 @@ namespace Yun.Web.Host.Startup
 
             app.UseCors(b=>b.AllowAnyOrigin().AllowAnyMethod().AllowCredentials().AllowAnyHeader()); // Enable CORS!
 
+
+            app.UseSignalR(r => r.MapHub<ChatHub>("hubs"));
             app.UseStaticFiles();
 
             app.UseAuthentication();

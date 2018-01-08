@@ -7,80 +7,49 @@ using Abp.Runtime.Session;
 using Abp.UI;
 using Castle.Core.Logging;
 using Castle.Windsor;
-using Microsoft.AspNet.SignalR;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Yun.Chat.SignalR
 {
-    public class ChatHub : Hub, ITransientDependency
+    public class ChatHub : Hub
     {
-        /// <summary>
-        /// Reference to the logger.
-        /// </summary>
-        public ILogger Logger { get; set; }
-
-        /// <summary>
-        /// Reference to the session.
-        /// </summary>
-        public IAbpSession AbpSession { get; set; }
-
-        private readonly IChatMessageManager _chatMessageManager;
-        private readonly ILocalizationManager _localizationManager;
-        private readonly IWindsorContainer _windsorContainer;
-        private bool _isCallByRelease;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ChatHub"/> class.
-        /// </summary>
-        public ChatHub(
-            IChatMessageManager chatMessageManager,
-            ILocalizationManager localizationManager, 
-            IWindsorContainer windsorContainer)
+        public override async Task OnConnectedAsync()
         {
-            _chatMessageManager = chatMessageManager;
-            _localizationManager = localizationManager;
-            _windsorContainer = windsorContainer;
-
-            Logger = NullLogger.Instance;
-            AbpSession = NullAbpSession.Instance;
+            await Clients.All.InvokeAsync("Send", $"{Context.ConnectionId} joined");
         }
 
-        public async Task<string> SendMessage(SendChatMessageInput input)
+        public override async Task OnDisconnectedAsync(Exception ex)
         {
-            var sender = AbpSession.ToUserIdentifier();
-            var receiver = new UserIdentifier(input.TenantId, input.UserId);
-
-            try
-            {
-                await _chatMessageManager.SendMessageAsync(sender, receiver,
-                    input.Message, input.TenancyName, input.UserName, input.HeadImage);
-                return string.Empty;
-            }
-            catch (UserFriendlyException ex)
-            {
-                Logger.Warn("Could not send chat message to user: " + receiver);
-                Logger.Warn(ex.ToString(), ex);
-                return ex.Message;
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn("Could not send chat message to user: " + receiver);
-                Logger.Warn(ex.ToString(), ex);
-                return _localizationManager.GetSource("AbpWeb").GetString("InternalServerError");
-            }
+            await Clients.All.InvokeAsync("Send", $"{Context.ConnectionId} left");
         }
 
-        protected override void Dispose(bool disposing)
+        public Task Send(string message)
         {
-            if (_isCallByRelease)
-            {
-                return;
-            }
-            base.Dispose(disposing);
-            if (disposing)
-            {
-                _isCallByRelease = true;
-                _windsorContainer.Release(this);
-            }
+            return Clients.All.InvokeAsync("Send", $"{Context.ConnectionId}: {message}");
+        }
+
+        public Task SendToGroup(string groupName, string message)
+        {
+            return Clients.Group(groupName).InvokeAsync("Send", $"{Context.ConnectionId}@{groupName}: {message}");
+        }
+
+        public async Task JoinGroup(string groupName)
+        {
+            await Groups.AddAsync(Context.ConnectionId, groupName);
+
+            await Clients.Group(groupName).InvokeAsync("Send", $"{Context.ConnectionId} joined {groupName}");
+        }
+
+        public async Task LeaveGroup(string groupName)
+        {
+            await Groups.RemoveAsync(Context.ConnectionId, groupName);
+
+            await Clients.Group(groupName).InvokeAsync("Send", $"{Context.ConnectionId} left {groupName}");
+        }
+
+        public Task Echo(string message)
+        {
+            return Clients.Client(Context.ConnectionId).InvokeAsync("Send", $"{Context.ConnectionId}: {message}");
         }
     }
 }
