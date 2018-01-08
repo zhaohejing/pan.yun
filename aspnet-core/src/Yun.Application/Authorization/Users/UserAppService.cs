@@ -27,7 +27,7 @@ using Yun.Dto;
 
 namespace Yun.Authorization.Users
 {
-    [AbpAuthorize(AppPermissions.Pages_Administration_Users)]
+    [AbpAuthorize]
     public class UserAppService : YunAppServiceBase, IUserAppService
     {
 
@@ -106,7 +106,7 @@ namespace Yun.Authorization.Users
 
        
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_Create, AppPermissions.Pages_Administration_Users_Edit)]
+        [AbpAuthorize]
         public async Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input)
         {
             //Getting all available roles
@@ -167,7 +167,7 @@ namespace Yun.Authorization.Users
             return output;
         }
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_ChangePermissions)]
+        [AbpAuthorize]
         public async Task<GetUserPermissionsForEditOutput> GetUserPermissionsForEdit(EntityDto<long> input)
         {
             var user = await UserManager.GetUserByIdAsync(input.Id);
@@ -181,14 +181,14 @@ namespace Yun.Authorization.Users
             };
         }
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_ChangePermissions)]
+        [AbpAuthorize]
         public async Task ResetUserSpecificPermissions(EntityDto<long> input)
         {
             var user = await UserManager.GetUserByIdAsync(input.Id);
             await UserManager.ResetAllPermissionsAsync(user);
         }
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_ChangePermissions)]
+        [AbpAuthorize]
         public async Task UpdateUserPermissions(UpdateUserPermissionsInput input)
         {
             var user = await UserManager.GetUserByIdAsync(input.Id);
@@ -208,7 +208,7 @@ namespace Yun.Authorization.Users
             }
         }
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_Delete)]
+        [AbpAuthorize]
         public async Task DeleteUser(EntityDto<long> input)
         {
             if (input.Id == AbpSession.GetUserId())
@@ -222,7 +222,7 @@ namespace Yun.Authorization.Users
 
       
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_Edit)]
+        [AbpAuthorize]
         protected virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
         {
             Debug.Assert(input.User.Id != null, "input.User.Id should be set.");
@@ -254,7 +254,7 @@ namespace Yun.Authorization.Users
          
         }
 
-        [AbpAuthorize(AppPermissions.Pages_Administration_Users_Create)]
+        [AbpAuthorize]
         protected virtual async Task CreateUserAsync(CreateOrUpdateUserInput input)
         {
 
