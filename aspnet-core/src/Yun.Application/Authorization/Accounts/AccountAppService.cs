@@ -55,16 +55,12 @@ namespace Yun.Authorization.Accounts
                 input.Password,""
             );
 
-            var isEmailConfirmationRequiredForLogin = await SettingManager.GetSettingValueAsync<bool>(AbpZeroSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin);
 
             return new RegisterOutput
             {
-                CanLogin = user.IsActive && (user.IsEmailConfirmed || !isEmailConfirmationRequiredForLogin)
+                CanLogin = user.IsActive 
             };
         }
-
-       
-
         public async Task<ResetPasswordOutput> ResetPassword(ResetPasswordInput input)
         {
             var user = await UserManager.GetUserByIdAsync(input.UserId);
