@@ -12,6 +12,11 @@ namespace Yun.Authorization.Accounts.Dto
         [Required]
         [StringLength(AbpUserBase.MaxNameLength)]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(AbpUserBase.MaxSurnameLength)]
+        public string Surname { get; set; }
+
         [Required]
         [StringLength(AbpUserBase.MaxUserNameLength)]
         public string UserName { get; set; }
@@ -25,10 +30,6 @@ namespace Yun.Authorization.Accounts.Dto
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         [DisableAuditing]
         public string Password { get; set; }
-        /// <summary>
-        /// 头像url
-        /// </summary>
-        public string HeadImageUrl { get; set; }
 
         [DisableAuditing]
         public string CaptchaResponse { get; set; }
@@ -39,7 +40,7 @@ namespace Yun.Authorization.Accounts.Dto
             {
                 if (!UserName.Equals(EmailAddress) && ValidationHelper.IsEmail(UserName))
                 {
-                    yield return new ValidationResult("Username cannot be an email address unless it's the same as your email address!");
+                    yield return new ValidationResult("Username cannot be an email address unless it's same with your email address !");
                 }
             }
         }

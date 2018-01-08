@@ -1,4 +1,4 @@
-﻿namespace Yun.Authorization.Accounts.Dto
+namespace Yun.Authorization.Accounts.Dto
 {
     public class RegisterOutput
     {

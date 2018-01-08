@@ -3,12 +3,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Abp.Application.Services;
 using Abp.IdentityFramework;
+using Abp.MultiTenancy;
 using Abp.Runtime.Session;
+using Abp.Threading;
 using Yun.Authorization.Users;
 using Yun.MultiTenancy;
 
 namespace Yun
 {
+  
     /// <summary>
     /// Derive your application services from this class.
     /// </summary>
@@ -23,20 +26,36 @@ namespace Yun
             LocalizationSourceName = YunConsts.LocalizationSourceName;
         }
 
-        protected virtual Task<User> GetCurrentUserAsync()
+        protected virtual async Task<User> GetCurrentUserAsync()
         {
-            var user = UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
+            var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
             if (user == null)
             {
-                throw new Exception("当前用户未登陆系统!");
+                throw new Exception("There is no current user!");
             }
 
             return user;
         }
 
+        protected virtual User GetCurrentUser()
+        {
+            return AsyncHelper.RunSync(GetCurrentUserAsync);
+        }
+
         protected virtual Task<Tenant> GetCurrentTenantAsync()
         {
-            return TenantManager.GetByIdAsync(AbpSession.GetTenantId());
+            using (CurrentUnitOfWork.SetTenantId(null))
+            {
+                return TenantManager.GetByIdAsync(AbpSession.GetTenantId());
+            }
+        }
+
+        protected virtual Tenant GetCurrentTenant()
+        {
+            using (CurrentUnitOfWork.SetTenantId(null))
+            {
+                return TenantManager.GetById(AbpSession.GetTenantId());
+            }
         }
 
         protected virtual void CheckErrors(IdentityResult identityResult)
