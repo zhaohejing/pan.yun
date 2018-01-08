@@ -7,7 +7,6 @@ using Abp.MultiTenancy;
 using Abp.Runtime.Caching;
 using Abp.Threading;
 using Yun.Authorization.Users;
-using Yun.Chat;
 
 namespace Yun.Friendships.Cache
 {
@@ -15,7 +14,6 @@ namespace Yun.Friendships.Cache
     {
         private readonly ICacheManager _cacheManager;
         private readonly IRepository<Friendship, long> _friendshipRepository;
-        private readonly IRepository<ChatMessage, long> _chatMessageRepository;
         private readonly ITenantCache _tenantCache;
         private readonly UserManager _userManager;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
@@ -25,14 +23,12 @@ namespace Yun.Friendships.Cache
         public UserFriendsCache(
             ICacheManager cacheManager,
             IRepository<Friendship, long> friendshipRepository,
-            IRepository<ChatMessage, long> chatMessageRepository,
             ITenantCache tenantCache,
             UserManager userManager,
             IUnitOfWorkManager unitOfWorkManager)
         {
             _cacheManager = cacheManager;
             _friendshipRepository = friendshipRepository;
-            _chatMessageRepository = chatMessageRepository;
             _tenantCache = tenantCache;
             _userManager = userManager;
             _unitOfWorkManager = unitOfWorkManager;
@@ -170,9 +166,6 @@ namespace Yun.Friendships.Cache
             {
                 var friendCacheItems =
                     (from friendship in _friendshipRepository.GetAll()
-                     join chatMessage in _chatMessageRepository.GetAll() on
-                     new { UserId = userIdentifier.UserId, TenantId = userIdentifier.TenantId, TargetUserId = friendship.FriendUserId, TargetTenantId = friendship.FriendTenantId, ChatSide = ChatSide.Receiver } equals
-                     new { UserId = chatMessage.UserId, TenantId = chatMessage.TenantId, TargetUserId = chatMessage.TargetUserId, TargetTenantId = chatMessage.TargetTenantId, ChatSide = chatMessage.Side } into chatMessageJoined
                      where friendship.UserId == userIdentifier.UserId
                      select new FriendCacheItem
                      {
@@ -182,7 +175,7 @@ namespace Yun.Friendships.Cache
                          FriendUserName = friendship.FriendUserName,
                          FriendTenancyName = friendship.FriendTenancyName,
                          HeadImage = friendship.HeadImage,
-                         UnreadMessageCount = chatMessageJoined.Count(cm => cm.ReadState == ChatMessageReadState.Unread)
+                         UnreadMessageCount =0
                      }).ToList();
 
                 var user = AsyncHelper.RunSync(() => _userManager.FindByIdAsync(userIdentifier.UserId.ToString()));

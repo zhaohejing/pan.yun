@@ -3,7 +3,6 @@ using Abp.Dependency;
 using Abp.Events.Bus.Entities;
 using Abp.Events.Bus.Handlers;
 using Abp.ObjectMapping;
-using Yun.Chat;
 
 namespace Yun.Friendships.Cache
 {
@@ -11,7 +10,6 @@ namespace Yun.Friendships.Cache
         IEventHandler<EntityCreatedEventData<Friendship>>,
         IEventHandler<EntityDeletedEventData<Friendship>>,
         IEventHandler<EntityUpdatedEventData<Friendship>>,
-        IEventHandler<EntityCreatedEventData<ChatMessage>>,
         ITransientDependency
     {
         private readonly IUserFriendsCache _userFriendsCache;
@@ -47,17 +45,6 @@ namespace Yun.Friendships.Cache
             _userFriendsCache.UpdateFriend(eventData.Entity.ToUserIdentifier(), friendCacheItem);
         }
 
-        public void HandleEvent(EntityCreatedEventData<ChatMessage> eventData)
-        {
-            var message = eventData.Entity;
-            if (message.ReadState == ChatMessageReadState.Unread)
-            {
-                _userFriendsCache.IncreaseUnreadMessageCount(
-                    new UserIdentifier(message.TenantId, message.UserId),
-                    new UserIdentifier(message.TargetTenantId, message.TargetUserId),
-                    1
-                );
-            }
-        }
+      
     }
 }

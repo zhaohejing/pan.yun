@@ -2,23 +2,19 @@
 using Abp;
 using Abp.Dependency;
 using Abp.RealTime;
-using Yun.Chat;
 using Yun.Friendships.Cache;
 
 namespace Yun.Friendships
 {
     public class ChatUserStateWatcher : ISingletonDependency
     {
-        private readonly IChatCommunicator _chatCommunicator;
         private readonly IUserFriendsCache _userFriendsCache;
         private readonly IOnlineClientManager _onlineClientManager;
 
         public ChatUserStateWatcher(
-            IChatCommunicator chatCommunicator,
             IUserFriendsCache userFriendsCache,
             IOnlineClientManager onlineClientManager)
         {
-            _chatCommunicator = chatCommunicator;
             _userFriendsCache = userFriendsCache;
             _onlineClientManager = onlineClientManager;
         }
@@ -50,8 +46,6 @@ namespace Yun.Friendships
                 {
                     continue;
                 }
-
-                _chatCommunicator.SendUserConnectionChangeToClients(friendUserClients, user, isConnected);
             }
         }
     }

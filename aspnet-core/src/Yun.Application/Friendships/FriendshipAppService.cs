@@ -7,7 +7,6 @@ using Abp.RealTime;
 using Abp.Runtime.Session;
 using Abp.UI;
 using Yun.Authorization.Users;
-using Yun.Chat;
 using Yun.Friendships.Dto;
 
 namespace Yun.Friendships
@@ -17,22 +16,16 @@ namespace Yun.Friendships
     {
         private readonly IFriendshipManager _friendshipManager;
         private readonly IOnlineClientManager _onlineClientManager;
-        private readonly IChatCommunicator _chatCommunicator;
         private readonly ITenantCache _tenantCache;
-        private readonly IChatFeatureChecker _chatFeatureChecker;
 
         public FriendshipAppService(
             IFriendshipManager friendshipManager,
             IOnlineClientManager onlineClientManager,
-            IChatCommunicator chatCommunicator,
-            ITenantCache tenantCache, 
-            IChatFeatureChecker chatFeatureChecker)
+            ITenantCache tenantCache)
         {
             _friendshipManager = friendshipManager;
             _onlineClientManager = onlineClientManager;
-            _chatCommunicator = chatCommunicator;
             _tenantCache = tenantCache;
-            _chatFeatureChecker = chatFeatureChecker;
         }
 
         public async Task<FriendDto> CreateFriendshipRequest(CreateFriendshipRequestInput input)
@@ -40,7 +33,6 @@ namespace Yun.Friendships
             var userIdentifier = AbpSession.ToUserIdentifier();
             var probableFriend = new UserIdentifier(input.TenantId, input.UserId);
 
-            _chatFeatureChecker.CheckChatFeatures(userIdentifier.TenantId, probableFriend.TenantId);
 
             if (await _friendshipManager.GetFriendshipOrNullAsync(userIdentifier, probableFriend) != null)
             {
@@ -69,14 +61,12 @@ namespace Yun.Friendships
             if (clients.Any())
             {
                 var isFriendOnline = _onlineClientManager.IsOnline(sourceFriendship.ToUserIdentifier());
-                _chatCommunicator.SendFriendshipRequestToClient(clients, targetFriendship, false, isFriendOnline);
             }
 
             var senderClients = _onlineClientManager.GetAllByUserId(userIdentifier);
             if (senderClients.Any())
             {
                 var isFriendOnline = _onlineClientManager.IsOnline(targetFriendship.ToUserIdentifier());
-                _chatCommunicator.SendFriendshipRequestToClient(senderClients, sourceFriendship, true, isFriendOnline);
             }
 
             var sourceFriendshipRequest = ObjectMapper.Map<FriendDto>(sourceFriendship);
@@ -104,7 +94,6 @@ namespace Yun.Friendships
             var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
             if (clients.Any())
             {
-                _chatCommunicator.SendUserStateChangeToClients(clients, friendIdentifier, FriendshipState.Blocked);
             }
         }
 
@@ -117,7 +106,6 @@ namespace Yun.Friendships
             var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
             if (clients.Any())
             {
-                _chatCommunicator.SendUserStateChangeToClients(clients, friendIdentifier, FriendshipState.Accepted);
             }
         }
 
@@ -130,7 +118,6 @@ namespace Yun.Friendships
             var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
             if (clients.Any())
             {
-                _chatCommunicator.SendUserStateChangeToClients(clients, friendIdentifier, FriendshipState.Blocked);
             }
         }
 
