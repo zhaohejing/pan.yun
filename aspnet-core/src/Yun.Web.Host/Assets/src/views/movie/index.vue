@@ -7,8 +7,8 @@
        :describeText="item.time">
         <mu-icon v-if="item.categoryName=='游戏'" value="games" slot="left" />
         <mu-icon v-else-if="item.categoryName=='电影'" value="movie" slot="left" />
-        <mu-icon v-else="item.categoryName=='音乐'" value="music" slot="left" />
-        <mu-icon value="details" slot="right" />
+        <mu-icon v-else="item.categoryName=='音乐'" value="music_note" slot="left" />
+        <mu-icon value="keyboard_arrow_right" slot="right" />
       </mu-list-item>
     </mu-list>
      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>

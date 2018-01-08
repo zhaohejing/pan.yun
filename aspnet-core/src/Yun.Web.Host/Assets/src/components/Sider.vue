@@ -15,7 +15,7 @@
        <mu-icon slot="left" value="send"/>
       </mu-list-item>
       <mu-list-item @click.native="toggle" title="">
-         <mu-icon slot="right" value="home"/>
+         <mu-icon slot="right" value="exit_to_app"/>
       </mu-list-item>
     </mu-list>
   </mu-drawer>
