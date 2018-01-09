@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/',
       name: 'container',
-      redirect: '/movie',
+      redirect: '/resources',
       component: r => require.ensure([], () => r(require('@/components/Container')), 'container'),
       children: [{
           path: '/my',
@@ -35,6 +35,11 @@ export default new Router({
           path: '/friend',
           name: 'friend',
           component: r => require.ensure([], () => r(require("views/friends/friend")), "friend")
+        },
+        {
+          path: '/chat',
+          name: 'chat',
+          component: r => require.ensure([], () => r(require("views/friends/chathub")), "chat")
         },
         {
           path: '/share',

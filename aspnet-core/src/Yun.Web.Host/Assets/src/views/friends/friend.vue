@@ -1,7 +1,7 @@
 <template>
 <div>
   <mu-list>
-    <mu-list-item title="Mike Li">
+    <mu-list-item @click="chat" title="Mike Li">
       <mu-avatar src="static/images/uicon.jpg" slot="rightAvatar"/>
       <mu-icon value="grade" slot="left" color="pinkA200"/>
     </mu-list-item>
@@ -32,5 +32,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "friend",
+  methods: {
+    chat() {
+      this.$router.push({ path: "/chat" });
+    }
+  }
+};
 </script>
