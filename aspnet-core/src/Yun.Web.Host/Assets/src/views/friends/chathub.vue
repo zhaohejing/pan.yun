@@ -23,15 +23,20 @@ export default {
   },
   methods: {
     get() {
-      // 下面對應到網址的部份
-      const hub = $.hubConnection("http://103.45.8.198");
-      // 下面對應了.net的DefaultHub
-      const proxy = hub.createHubProxy("hubs");
-      proxy.on("OnConnectedAsync", data => {
-        this.messages = data;
+      const connection = $.hubConnection("http://103.45.8.198");
+      // 如果前后端为同一个端口，可不填参数。如果前后端分离，这里参数为服务器端的URL
+      const demoChatHubProxy = connection.createHubProxy("hubs");
+      demoChatHubProxy.on("Send", (userName, message) => {
+        console.log(userName + " " + message);
       });
-      // 一開始就先去呼叫Get，以確保畫面一開始就有預設的資料
-      hub.start().done(() => proxy.invoke("OnConnectedAsync"));
+      connection
+        .start()
+        .done(() => {
+          console.log("Now connected, connection ID=" + connection.id);
+        })
+        .fail(() => {
+          console.log("Could not connect");
+        });
     }
   },
   created() {
