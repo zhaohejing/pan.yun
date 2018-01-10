@@ -14,6 +14,8 @@ using Yun.Authorization.Roles;
 using Yun.Authorization.Roles.Dto;
 using Yun.Authorization.Users;
 using Yun.Authorization.Users.Dto;
+using Yun.Friendships;
+using Yun.Friendships.Dto;
 using Yun.MultiTenancy;
 using Yun.Sessions.Dto;
 using Yun.Shares;
@@ -37,10 +39,8 @@ namespace Yun
             configuration.CreateMap<Role, RoleListDto>();
             configuration.CreateMap<UserRole, UserListRoleDto>();
 
-          
-
-
-
+            //friends
+            configuration.CreateMap<FriendDto, Friendship>();
             //Permission
             configuration.CreateMap<Permission, FlatPermissionDto>();
             configuration.CreateMap<Permission, FlatPermissionWithLevelDto>();
