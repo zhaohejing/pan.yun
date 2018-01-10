@@ -13,5 +13,6 @@ namespace Yun.Friendships.Dto
         public FriendshipState State { get; set; }
 
         public DateTime CreationTime { get; set; }
+        public bool IsOnline { get; set; }
     }
 }
