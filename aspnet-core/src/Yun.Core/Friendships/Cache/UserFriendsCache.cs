@@ -61,8 +61,7 @@ namespace Yun.Friendships.Cache
             lock (_syncObj)
             {
                 var friend = user.Friends.FirstOrDefault(
-                     f => f.FriendUserId == friendIdentifier.UserId &&
-                     f.FriendTenantId == friendIdentifier.TenantId
+                     f => f.FriendUserId == friendIdentifier.UserId 
                  );
 
                 if (friend == null)
@@ -86,8 +85,7 @@ namespace Yun.Friendships.Cache
             lock (_syncObj)
             {
                 var friend = user.Friends.FirstOrDefault(
-                     f => f.FriendUserId == friendIdentifier.UserId &&
-                     f.FriendTenantId == friendIdentifier.TenantId
+                     f => f.FriendUserId == friendIdentifier.UserId
                 );
 
                 if (friend == null)
@@ -144,8 +142,7 @@ namespace Yun.Friendships.Cache
             lock (_syncObj)
             {
                 var existingFriendIndex = user.Friends.FindIndex(
-                    f => f.FriendUserId == friend.FriendUserId &&
-                    f.FriendTenantId == friend.FriendTenantId
+                    f => f.FriendUserId == friend.FriendUserId 
                 );
 
                 if (existingFriendIndex >= 0)
@@ -170,10 +167,8 @@ namespace Yun.Friendships.Cache
                      select new FriendCacheItem
                      {
                          FriendUserId = friendship.FriendUserId,
-                         FriendTenantId = friendship.FriendTenantId,
                          State = friendship.State,
                          FriendUserName = friendship.FriendUserName,
-                         FriendTenancyName = friendship.FriendTenancyName,
                          HeadImage = friendship.HeadImage,
                          UnreadMessageCount =0
                      }).ToList();

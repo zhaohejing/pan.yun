@@ -1,4 +1,5 @@
 ﻿using Abp;
+using Yun.MultiTenancy;
 
 namespace Yun.Friendships
 {
@@ -6,12 +7,12 @@ namespace Yun.Friendships
     {
         public static UserIdentifier ToUserIdentifier(this Friendship friendship)
         {
-            return new UserIdentifier(friendship.TenantId, friendship.UserId);
+            return new UserIdentifier(1, friendship.UserId);
         }
 
         public static UserIdentifier ToFriendIdentifier(this Friendship friendship)
         {
-            return new UserIdentifier(friendship.FriendTenantId, friendship.FriendUserId);
+            return new UserIdentifier(1, friendship.FriendUserId);
         }
     }
 }

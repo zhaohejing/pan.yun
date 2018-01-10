@@ -328,3 +328,85 @@ INFO  2018-01-08 16:31:52,274 [1    ] Yun.Migrator.Log                         -
 INFO  2018-01-08 16:31:52,493 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
 DEBUG 2018-01-08 16:31:54,163 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2018-01-08 16:31:54,164 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-10 14:15:51,207 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-10 14:15:51,413 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-10 14:15:51,761 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,764 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,765 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,765 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,765 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,766 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,766 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,767 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,767 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:51,771 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-10 14:15:52,320 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:15:53,251 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-10 14:15:53,269 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-10 14:15:53,276 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-10 14:15:53,276 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-10 14:15:53,530 [1    ] Yun.Migrator.Log                         - Host database: Data Source=103.45.102.47;port=3306;Initial Catalog=yunpan;uid=root;password=Dizhu2017;;Charset=utf8;
+INFO  2018-01-10 14:15:53,531 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-10 14:15:55,955 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-10 14:15:58,277 [1    ] Yun.Migrator.Log                         - An error occured during migration of host database:
+INFO  2018-01-10 14:15:58,376 [1    ] Yun.Migrator.Log                         - MySql.Data.MySqlClient.MySqlException (0x80004005): Table 'abpauditlogs' already exists ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Table 'abpauditlogs' already exists
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter.GetResult()
+   at MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__1.MoveNext() in C:\projects\mysqlconnector\src\MySqlConnector\Core\ResultSet.cs:line 43
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet(ResultSet resultSet) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 92
+   at MySql.Data.MySqlClient.MySqlDataReader.<ReadFirstResultSetAsync>d__65.MoveNext() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 297
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MySql.Data.MySqlClient.MySqlDataReader.<CreateAsync>d__64.MoveNext() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 287
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MySqlConnector.Core.TextCommandExecutor.<ExecuteReaderAsync>d__3.MoveNext() in C:\projects\mysqlconnector\src\MySqlConnector\Core\TextCommandExecutor.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MySqlConnector.Core.TextCommandExecutor.<ExecuteNonQueryAsync>d__1.MoveNext() in C:\projects\mysqlconnector\src\MySqlConnector\Core\TextCommandExecutor.cs:line 25
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 60
+   at Microsoft.EntityFrameworkCore.Storage.Internal.MySqlRelationalCommand.<ExecuteAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.MySqlRelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroDbMigrator`1.CreateOrMigrate(AbpTenantBase tenant, Action`1 seedAction) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore.EntityFrameworkCore\Zero\EntityFrameworkCore\AbpZeroDbMigrator.cs:line 74
+   at Yun.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) in D:\mywork\qicq\aspnet-core\src\Yun.Migrator\MultiTenantMigrateExecuter.cs:line 62
+INFO  2018-01-10 14:15:58,376 [1    ] Yun.Migrator.Log                         - Canceled migrations.
+DEBUG 2018-01-10 14:16:36,103 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-10 14:16:36,192 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2018-01-10 14:16:36,473 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.Migrator.YunMigratorModule, Yun.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.EntityFrameworkCore.YunEntityFrameworkModule, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Yun.YunCoreModule, Yun.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,480 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:36,485 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2018-01-10 14:16:37,053 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Yun.EntityFrameworkCore.YunDbContext, Yun.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-10 14:16:38,008 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-10 14:16:38,027 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-10 14:16:38,034 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-01-10 14:16:38,035 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Yun
+INFO  2018-01-10 14:16:38,296 [1    ] Yun.Migrator.Log                         - Host database: Data Source=103.45.102.47;port=3306;Initial Catalog=yunpan;uid=root;password=Dizhu2017;;Charset=utf8;
+INFO  2018-01-10 14:16:38,296 [1    ] Yun.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2018-01-10 14:16:45,347 [1    ] Yun.Migrator.Log                         - HOST database migration started...
+INFO  2018-01-10 14:16:53,836 [1    ] Yun.Migrator.Log                         - HOST database migration completed.
+INFO  2018-01-10 14:16:53,836 [1    ] Yun.Migrator.Log                         - --------------------------------------------------------
+INFO  2018-01-10 14:16:54,033 [1    ] Yun.Migrator.Log                         - All databases have been migrated.
+DEBUG 2018-01-10 14:16:55,771 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-10 14:16:55,772 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

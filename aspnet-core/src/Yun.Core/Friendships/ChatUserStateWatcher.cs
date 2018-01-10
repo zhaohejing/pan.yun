@@ -41,7 +41,7 @@ namespace Yun.Friendships
            
             foreach (var friend in cacheItem.Friends)
             {
-                var friendUserClients = _onlineClientManager.GetAllByUserId(new UserIdentifier(friend.FriendTenantId, friend.FriendUserId));
+                var friendUserClients = _onlineClientManager.GetAllByUserId(new UserIdentifier(1, friend.FriendUserId));
                 if (!friendUserClients.Any())
                 {
                     continue;

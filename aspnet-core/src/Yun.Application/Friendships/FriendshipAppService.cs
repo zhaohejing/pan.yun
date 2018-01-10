@@ -1,12 +1,18 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using Abp.MultiTenancy;
 using Abp.RealTime;
 using Abp.Runtime.Session;
 using Abp.UI;
+using Microsoft.EntityFrameworkCore;
 using Yun.Authorization.Users;
+using Yun.Dto;
 using Yun.Friendships.Dto;
 
 namespace Yun.Friendships
@@ -16,71 +22,65 @@ namespace Yun.Friendships
     {
         private readonly IFriendshipManager _friendshipManager;
         private readonly IOnlineClientManager _onlineClientManager;
-        private readonly ITenantCache _tenantCache;
+        private readonly IRepository<Friendship,long> _friendRepository;
 
         public FriendshipAppService(
             IFriendshipManager friendshipManager,
-            IOnlineClientManager onlineClientManager,
-            ITenantCache tenantCache)
+            IOnlineClientManager onlineClientManager, IRepository<Friendship, long> friendRepository)
         {
             _friendshipManager = friendshipManager;
             _onlineClientManager = onlineClientManager;
-            _tenantCache = tenantCache;
+            _friendRepository = friendRepository;
         }
 
         public async Task<FriendDto> CreateFriendshipRequest(CreateFriendshipRequestInput input)
         {
             var userIdentifier = AbpSession.ToUserIdentifier();
-            var probableFriend = new UserIdentifier(input.TenantId, input.UserId);
+            var probableFriend = new UserIdentifier(AbpSession.TenantId, input.UserId);
 
 
             if (await _friendshipManager.GetFriendshipOrNullAsync(userIdentifier, probableFriend) != null)
             {
                 throw new UserFriendlyException(L("YouAlreadySentAFriendshipRequestToThisUser"));
             }
-
             var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
+            User 
+            probableFriendUser = await UserManager.FindByIdAsync(input.UserId.ToString());
 
-            User probableFriendUser;
-            using (CurrentUnitOfWork.SetTenantId(input.TenantId))
-            {
-                probableFriendUser = await UserManager.FindByIdAsync(input.UserId.ToString());
-            }
-
-            var friendTenancyName = probableFriend.TenantId.HasValue ? _tenantCache.Get(probableFriend.TenantId.Value).TenancyName : null;
-            var sourceFriendship = new Friendship(userIdentifier, probableFriend, friendTenancyName,
+            var sourceFriendship = new Friendship(userIdentifier, probableFriend,
                 probableFriendUser.UserName, probableFriendUser.HeadImage, FriendshipState.Accepted);
             await _friendshipManager.CreateFriendshipAsync(sourceFriendship);
-
-            var userTenancyName = user.TenantId.HasValue ? _tenantCache.Get(user.TenantId.Value).TenancyName : null;
-            var targetFriendship = new Friendship(probableFriend, userIdentifier, userTenancyName, user.UserName,
+            var targetFriendship = new Friendship(probableFriend, userIdentifier, user.UserName,
                 user.HeadImage, FriendshipState.Accepted);
             await _friendshipManager.CreateFriendshipAsync(targetFriendship);
-
-            var clients = _onlineClientManager.GetAllByUserId(probableFriend);
-            if (clients.Any())
-            {
-                var isFriendOnline = _onlineClientManager.IsOnline(sourceFriendship.ToUserIdentifier());
-            }
-
-            var senderClients = _onlineClientManager.GetAllByUserId(userIdentifier);
-            if (senderClients.Any())
-            {
-                var isFriendOnline = _onlineClientManager.IsOnline(targetFriendship.ToUserIdentifier());
-            }
-
             var sourceFriendshipRequest = ObjectMapper.Map<FriendDto>(sourceFriendship);
             sourceFriendshipRequest.IsOnline = _onlineClientManager.GetAllByUserId(probableFriend).Any();
-
             return sourceFriendshipRequest;
+        }
+        /// <summary>
+        /// 获取好友列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<FriendDto>> GetUserFriends(PagedAndSortedInputDto input)
+        {
+            var user = AbpSession.GetUserId();
+            var query =  _friendRepository.GetAll().Where(c=>c.UserId==user);
+            var userCount = await query.CountAsync();
+
+            var friends = await query
+                .OrderByDescending(c=>c.CreationTime)
+                .PageBy(input)
+                .ToListAsync();
+            var dtos = ObjectMapper.Map<List<FriendDto>>(friends);
+            return new PagedResultDto<FriendDto>(userCount, dtos);
         }
 
         public async Task<FriendDto> CreateFriendshipRequestByUserName(CreateFriendshipRequestByUserNameInput input)
         {
-            var probableFriend = await GetUserIdentifier(input.TenancyName, input.UserName);
+            var probableFriend = await GetUserIdentifier(input.UserName);
             return await CreateFriendshipRequest(new CreateFriendshipRequestInput
             {
-                TenantId = probableFriend.TenantId,
                 UserId = probableFriend.UserId
             });
         }
@@ -90,11 +90,6 @@ namespace Yun.Friendships
             var userIdentifier = AbpSession.ToUserIdentifier();
             var friendIdentifier = new UserIdentifier(input.TenantId, input.UserId);
             await _friendshipManager.BanFriendAsync(userIdentifier, friendIdentifier);
-
-            var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
-            if (clients.Any())
-            {
-            }
         }
 
         public async Task UnblockUser(UnblockUserInput input)
@@ -102,11 +97,6 @@ namespace Yun.Friendships
             var userIdentifier = AbpSession.ToUserIdentifier();
             var friendIdentifier = new UserIdentifier(input.TenantId, input.UserId);
             await _friendshipManager.AcceptFriendshipRequestAsync(userIdentifier, friendIdentifier);
-
-            var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
-            if (clients.Any())
-            {
-            }
         }
 
         public async Task AcceptFriendshipRequest(AcceptFriendshipRequestInput input)
@@ -114,31 +104,11 @@ namespace Yun.Friendships
             var userIdentifier = AbpSession.ToUserIdentifier();
             var friendIdentifier = new UserIdentifier(input.TenantId, input.UserId);
             await _friendshipManager.AcceptFriendshipRequestAsync(userIdentifier, friendIdentifier);
-
-            var clients = _onlineClientManager.GetAllByUserId(userIdentifier);
-            if (clients.Any())
-            {
-            }
         }
 
-        private async Task<UserIdentifier> GetUserIdentifier(string tenancyName, string userName)
+        private async Task<UserIdentifier> GetUserIdentifier( string userName)
         {
-            int? tenantId = null;
-            if (!tenancyName.Equals("."))
-            {
-                using (CurrentUnitOfWork.SetTenantId(null))
-                {
-                    var tenant = await TenantManager.FindByTenancyNameAsync(tenancyName);
-                    if (tenant == null)
-                    {
-                        throw new UserFriendlyException("There is no such tenant !");
-                    }
-
-                    tenantId = tenant.Id;
-                }
-            }
-
-            using (CurrentUnitOfWork.SetTenantId(tenantId))
+            using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var user = await UserManager.FindByNameOrEmailAsync(userName);
                 if (user == null)

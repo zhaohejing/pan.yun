@@ -10,11 +10,9 @@ namespace Yun.Friendships.Cache
 
         public long FriendUserId { get; set; }
 
-        public int? FriendTenantId { get; set; }
 
         public string FriendUserName { get; set; }
 
-        public string FriendTenancyName { get; set; }
 
         public string HeadImage { get; set; }
 

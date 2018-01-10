@@ -10,21 +10,15 @@ using Abp.Timing;
 namespace Yun.Friendships
 {
     [Table("Friendships")]
-    public class Friendship : Entity<long>, IHasCreationTime, IMayHaveTenant
+    public class Friendship : Entity<long>, IHasCreationTime
     {
         public long UserId { get; set; }
-
-        public int? TenantId { get; set; }
-
         public long FriendUserId { get; set; }
-
-        public int? FriendTenantId { get; set; }
 
         [Required]
         [MaxLength(AbpUserBase.MaxUserNameLength)]
         public string FriendUserName { get; set; }
 
-        public string FriendTenancyName { get; set; }
 
         public string HeadImage { get; set; }
 
@@ -33,7 +27,6 @@ namespace Yun.Friendships
         public DateTime CreationTime { get; set; }
 
         public Friendship(UserIdentifier user, UserIdentifier probableFriend, 
-            string probableFriendTenancyName,
             string probableFriendUserName,
             string headImage, FriendshipState state)
         {
@@ -53,10 +46,7 @@ namespace Yun.Friendships
             }
 
             UserId = user.UserId;
-            TenantId = user.TenantId;
             FriendUserId = probableFriend.UserId;
-            FriendTenantId = probableFriend.TenantId;
-            FriendTenancyName = probableFriendTenancyName;
             FriendUserName = probableFriendUserName;
             State = state;
             HeadImage = headImage;

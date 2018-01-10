@@ -19,27 +19,24 @@ namespace Yun.Friendships
         [UnitOfWork]
         public async Task CreateFriendshipAsync(Friendship friendship)
         {
-            if (friendship.TenantId == friendship.FriendTenantId &&
+            if (
                 friendship.UserId == friendship.FriendUserId)
             {
                 throw new UserFriendlyException(L("YouCannotBeFriendWithYourself"));
             }
-
-            using (CurrentUnitOfWork.SetTenantId(friendship.TenantId))
-            {
+        
                 _friendshipRepository.Insert(friendship);
                await CurrentUnitOfWork.SaveChangesAsync();
-            }
         }
+
+
 
         [UnitOfWork]
         public async Task UpdateFriendshipAsync(Friendship friendship)
         {
-            using (CurrentUnitOfWork.SetTenantId(friendship.TenantId))
-            {
+         
                 _friendshipRepository.Update(friendship);
                 await CurrentUnitOfWork.SaveChangesAsync();
-            }
         }
 
         [UnitOfWork]
@@ -49,9 +46,7 @@ namespace Yun.Friendships
             {
                 return await _friendshipRepository.FirstOrDefaultAsync(friendship =>
                                     friendship.UserId == user.UserId &&
-                                    friendship.TenantId == user.TenantId &&
-                                    friendship.FriendUserId == probableFriend.UserId &&
-                                    friendship.FriendTenantId == probableFriend.TenantId);
+                                    friendship.FriendUserId == probableFriend.UserId );
             }
         }
 
