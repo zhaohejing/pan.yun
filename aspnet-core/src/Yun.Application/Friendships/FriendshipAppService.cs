@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.MultiTenancy;
@@ -53,7 +54,7 @@ namespace Yun.Friendships
             var targetFriendship = new Friendship(probableFriend, userIdentifier, user.UserName,
                 user.HeadImage, FriendshipState.Accepted);
             await _friendshipManager.CreateFriendshipAsync(targetFriendship);
-            var sourceFriendshipRequest = ObjectMapper.Map<FriendDto>(sourceFriendship);
+            var sourceFriendshipRequest = sourceFriendship.MapTo<FriendDto>();
             sourceFriendshipRequest.IsOnline = _onlineClientManager.GetAllByUserId(probableFriend).Any();
             return sourceFriendshipRequest;
         }
@@ -72,7 +73,7 @@ namespace Yun.Friendships
                 .OrderByDescending(c=>c.CreationTime)
                 .PageBy(input)
                 .ToListAsync();
-            var dtos = ObjectMapper.Map<List<FriendDto>>(friends);
+            var dtos = friends.MapTo<List<FriendDto>>();
             return new PagedResultDto<FriendDto>(userCount, dtos);
         }
 

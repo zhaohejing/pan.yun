@@ -1,7 +1,10 @@
 ﻿using System;
+using Abp.AutoMapper;
+using AutoMapper;
 
 namespace Yun.Friendships.Dto
 {
+    [AutoMap(typeof(Friendship))]
     public class FriendDto
     {
         public long UserId { get; set; }
@@ -13,6 +16,7 @@ namespace Yun.Friendships.Dto
         public FriendshipState State { get; set; }
 
         public DateTime CreationTime { get; set; }
+        [IgnoreMap]
         public bool IsOnline { get; set; }
     }
 }
