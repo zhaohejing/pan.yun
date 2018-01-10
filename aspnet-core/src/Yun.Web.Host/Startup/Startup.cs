@@ -37,6 +37,13 @@ namespace Yun.Web.Host.Startup
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(DefaultCorsPolicyName))
             );
             services.AddSignalR();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SignalrCore",
+                    policy => policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
             // Configure CORS for angular2 UI
@@ -90,8 +97,9 @@ namespace Yun.Web.Host.Startup
 
             app.UseCors(b=>b.AllowAnyOrigin().AllowAnyMethod().AllowCredentials().AllowAnyHeader()); // Enable CORS!
 
-
+            app.UseCors("SignalrCore");
             app.UseSignalR(r => r.MapHub<ChatHub>("hubs"));
+            app.UseWebSockets();
             app.UseStaticFiles();
 
             app.UseAuthentication();
