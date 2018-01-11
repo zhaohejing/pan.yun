@@ -13,7 +13,7 @@
       </mu-card-actions>
     </mu-card>
     <mu-list>
-      <mu-list-item v-for="item,index in share.comments" :key="index" :title="item.from">
+      <mu-list-item @click="userdetail(item)" v-for="item,index in share.comments" :key="index" :title="item.from">
         <mu-avatar src="static/images/uicon.jpg" slot="leftAvatar" />
         <span slot="describe">
           <span style="color: rgba(0, 0, 0, .87)">{{item.creationTime | moment("YYYY/MM/DD HH:mm:ss")  }}</span>
@@ -47,6 +47,9 @@ export default {
     this.init();
   },
   methods: {
+    userdetail(item) {
+      this.$router.push({ path: `/userdetail/${item.creatorUserId}` });
+    },
     save() {
       const model = {
         shareId: this.share.id,
