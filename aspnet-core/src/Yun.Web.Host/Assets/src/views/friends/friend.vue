@@ -22,6 +22,11 @@ export default {
     };
   },
   created() {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      this.$router.push({ path: "/login" });
+      return;
+    }
     this.init();
   },
   methods: {

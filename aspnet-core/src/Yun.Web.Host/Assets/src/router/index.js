@@ -37,6 +37,11 @@ export default new Router({
           component: r => require.ensure([], () => r(require("views/friends/friend")), "friend")
         },
         {
+          path: '/userdetail/:id',
+          name: 'userdetail',
+          component: r => require.ensure([], () => r(require("views/friends/userdetail")), "userdetail")
+        },
+        {
           path: '/chat',
           name: 'chat',
           component: r => require.ensure([], () => r(require("views/friends/chathub")), "chat")
