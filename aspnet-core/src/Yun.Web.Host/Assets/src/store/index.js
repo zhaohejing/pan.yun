@@ -3,11 +3,11 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 // 需要维护的状态
 const state = {
-  title: "",
-  loading: false,
-  open: false,
-  showToast: false,
-  showText: ""
+  title: "", // title组件动态标题
+  loading: false, // 全局loading状态
+  open: false, // siderbar 状态
+  showToast: false, // toast 状态
+  showText: "" // toast提示文字
 };
 
 const mutations = {

@@ -17,7 +17,7 @@ export function register(data) {
 
 export function getInfo() {
   return fetch({
-    url: '/api/services/app/session/GetCurrentLoginInformations',
-    method: 'post'
+    url: '/api/services/app/Session/GetCurrentLoginInformations',
+    method: 'get'
   });
 }
