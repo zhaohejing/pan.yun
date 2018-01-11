@@ -5,7 +5,7 @@
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
         <mu-paper class="demo-paper" circle :zDepth="2">
-          <mu-avatar size="100" src="static/images/uicon.jpg" />
+          <mu-avatar :size="100" src="static/images/uicon.jpg" />
         </mu-paper>
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
@@ -38,9 +38,11 @@
         </mu-list-item>
         <mu-list-item disableRipple @click="handleToggle('videoSounds')" title="视频的声音">
           <mu-checkbox v-model="videoSounds" slot="left" />
-        </mu-list-item>
+        </mu-list-item >
+            <mu-list-item @click.native="exit" title="退出">
+         <mu-icon slot="right" value="exit_to_app"/>
+      </mu-list-item>
       </mu-list>
-
     </div>
   </div>
 
@@ -70,6 +72,10 @@ export default {
     }
   },
   methods: {
+    exit() {
+      sessionStorage.clear();
+      this.$router.push({ path: "/login" });
+    },
     init() {
       getInfo().then(r => {
         if (r && r.result) {
