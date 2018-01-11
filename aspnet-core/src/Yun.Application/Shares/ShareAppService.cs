@@ -52,7 +52,8 @@ namespace Yun.Shares
         public async Task<PagedResultDto<ShareListDto>> GetPagedSharesAsync(GetShareInput input)
         {
             var query = _shareRepository.GetAllIncluding(c=>c.Category);
-            query = query.WhereIf(!input.Filter.IsNullOrWhiteSpace(), c => c.Title.Contains(input.Filter));
+            query = query.WhereIf(!input.Filter.IsNullOrWhiteSpace(), c => c.Title.Contains(input.Filter))
+                .WhereIf(input.Category.HasValue, c => c.CategoryId == input.Category.Value);
             var count = await query.CountAsync();
             var shares = await query
                 .OrderBy(input.Sorting)

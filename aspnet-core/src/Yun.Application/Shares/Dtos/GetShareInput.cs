@@ -13,6 +13,7 @@ namespace YT.Shares.Dtos
         /// </summary>
         public string Filter { get; set; }
 
+        public int? Category { get; set; }
         /// <summary>
         /// 用于排序的默认值
         /// </summary>

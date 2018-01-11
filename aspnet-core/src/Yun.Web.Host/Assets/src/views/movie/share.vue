@@ -41,7 +41,7 @@ export default {
       inserShare({ shareEditDto: this.model })
         .then(r => {
           if (r && r.success) {
-            this.$router.push({ path: "/movie" });
+            this.$router.push({ path: "/resources" });
           }
         })
         .catch(e => {

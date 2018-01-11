@@ -92,7 +92,10 @@ namespace Yun.Shares.Dtos
         /// 评论人头像
         /// </summary>
         public string FromImage { get; set; }
-
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public long CreatorUserId { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
