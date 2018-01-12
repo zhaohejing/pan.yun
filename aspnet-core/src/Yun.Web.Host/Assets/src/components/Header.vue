@@ -1,14 +1,14 @@
 <template>
-    <mu-appbar class="header"  :title="title">
-      <mu-icon-button  @click="toggle" icon="menu" slot="left" />
-       <mu-icon-button @click="gotoshare" icon="publish" slot="right" />
-      <mu-icon-menu :value="theme" @change="changetheme" icon="settings" slot="right">
-        <mu-menu-item title="亮" value="light"/>
-        <mu-menu-item title="暗" value="dark"/>
-        <mu-menu-item title="卡通" value="carbon"/>
-        <mu-menu-item title="其他" value="teal"/>
-      </mu-icon-menu>
-    </mu-appbar>
+  <mu-appbar class="header" :title="title">
+    <mu-icon-button @click="toggle" icon="menu" slot="left" />
+    <mu-icon-button @click="gotoshare" icon="publish" slot="right" />
+    <mu-icon-menu :value="theme" @change="changetheme" icon="settings" slot="right">
+      <mu-menu-item title="亮" value="light" />
+      <mu-menu-item title="暗" value="dark" />
+      <mu-menu-item title="卡通" value="carbon" />
+      <mu-menu-item title="其他" value="teal" />
+    </mu-icon-menu>
+  </mu-appbar>
 
 </template>
 
@@ -38,10 +38,14 @@ export default {
     },
     gotoshare() {
       if (!sessionStorage.getItem("token")) {
-        this.$router.push({ path: "/login" });
+        this.$router.push({
+          path: "/login"
+        });
         return;
       }
-      this.$router.push({ path: "/share" });
+      this.$router.push({
+        path: "/share"
+      });
     },
     changetheme(item) {
       this.theme = item;

@@ -5,7 +5,7 @@
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
         <mu-paper class="demo-paper" circle :zDepth="2">
-          <mu-avatar :size="100" src="static/images/uicon.jpg" />
+          <mu-avatar :size="100" :src="current.head" />
         </mu-paper>
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
@@ -65,10 +65,11 @@ export default {
   created() {
     const user = sessionStorage.getItem("name");
     const email = sessionStorage.getItem("email");
+    const head = sessionStorage.getItem("headimgurl");
     if (!user || !email) {
       this.init();
     } else {
-      this.current = { user, email };
+      this.current = { user, email, head };
     }
   },
   methods: {
