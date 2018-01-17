@@ -98,7 +98,7 @@ namespace Yun.Web.Host.Startup
             app.UseCors(b=>b.AllowAnyOrigin().AllowAnyMethod().AllowCredentials().AllowAnyHeader()); // Enable CORS!
 
             app.UseCors("SignalrCore");
-            app.UseSignalR(r => r.MapHub<ChatHub>("/hubs"));
+            app.UseSignalR(r => r.MapHub<ChatHub>("hubs"));
             app.UseWebSockets();
             app.UseStaticFiles();
 

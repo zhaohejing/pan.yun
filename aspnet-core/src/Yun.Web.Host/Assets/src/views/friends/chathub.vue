@@ -1,11 +1,7 @@
 
 <template>
    <div>
-    <ul>
-      <li v-for="item in messages">
-        {{item.Message}}
-      </li>
-    </ul>
+
   </div>
 </template>
 
@@ -23,6 +19,7 @@ export default {
   },
   methods: {
     get() {
+      debugger;
       const client = new signalR.client(
         "http://103.45.8.198/signalR", // signalR service URL
         ["hubs"], // array of hubs to be supported in the connection
@@ -40,6 +37,6 @@ export default {
     }
   },
   created() {
-    // this.get();
+    this.get();
   }
 };
