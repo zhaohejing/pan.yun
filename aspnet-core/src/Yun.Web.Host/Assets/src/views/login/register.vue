@@ -4,7 +4,9 @@
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
-        <mu-paper class="demo-paper" :zDepth="2" />
+          <mu-paper class="demo-paper" circle :zDepth="2">
+          <mu-avatar :size="100" src="static/images/uicon.jpg" />
+        </mu-paper>
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>

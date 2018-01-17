@@ -1,10 +1,12 @@
 <template>
-  <div >
+  <div class="container">
     <mu-flexbox>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
-        <mu-paper class="demo-paper" :zDepth="2" />
+        <mu-paper class="demo-paper" circle :zDepth="2">
+          <mu-avatar :size="100" src="static/images/uicon.jpg" />
+        </mu-paper>
       </mu-flexbox-item>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
@@ -18,19 +20,17 @@
       <br/>
     </div>
     <mu-flexbox>
-      <mu-flexbox-item >
+      <mu-flexbox-item>
         <mu-raised-button class="demo-raised-button" @click="login" label="登陆" backgroundColor="#80deea" />
       </mu-flexbox-item>
-      <mu-flexbox-item >
-        <mu-raised-button class="demo-raised-button" @click="register"  label="注册"  backgroundColor="#a4c639" />
+      <mu-flexbox-item>
+        <mu-raised-button class="demo-raised-button" @click="register" label="注册" backgroundColor="#a4c639" />
       </mu-flexbox-item>
     </mu-flexbox>
-       <mu-flexbox>
-      <mu-flexbox-item >
-         <mu-icon-button @click="weChatLogin"  v-if="auths!=null" icon="android"/>
-      </mu-flexbox-item>
-      <mu-flexbox-item >
-         <mu-icon-button @click="QQLogin"  v-if="auths!=null" icon="android"/>
+    <mu-flexbox>
+      <mu-flexbox-item>
+        <mu-icon-button @click="weChatLogin"  v-if="auths!=null" icon="android" />
+        <mu-icon-button @click="QQLogin" v-if="auths!=null" icon="android" />
       </mu-flexbox-item>
     </mu-flexbox>
   </div>
@@ -49,7 +49,11 @@ export default {
       notifications: false,
       sounds: false,
       videoSounds: false,
-      model: { userNameOrEmailAddress: "", password: "", rememberClient: true },
+      model: {
+        userNameOrEmailAddress: "",
+        password: "",
+        rememberClient: true
+      },
       auths: null
     };
   },
@@ -88,7 +92,9 @@ export default {
           sessionStorage.setItem("name", this.auths.userInfo.nickname);
           sessionStorage.setItem("email", "test");
           sessionStorage.setItem("headimgurl", this.auths.userInfo.headimgurl);
-          this.$router.push({ path: "/my" });
+          this.$router.push({
+            path: "/my"
+          });
           return;
         }
         this.auths.getUserInfo(
@@ -121,7 +127,9 @@ export default {
           if (r && r.result) {
             sessionStorage.setItem("token", r.result.accessToken);
             sessionStorage.setItem("userId", r.result.userId);
-            this.$router.push({ path: "/resources" });
+            this.$router.push({
+              path: "/resources"
+            });
           } else {
             this.$store.dispatch("show", {
               state: true,
@@ -137,7 +145,9 @@ export default {
         });
     },
     register() {
-      this.$router.push({ path: "/register" });
+      this.$router.push({
+        path: "/register"
+      });
     }
   }
 };
@@ -155,11 +165,15 @@ export default {
 .login-container {
   margin-top: 30px;
 }
+.container {
+  background-color: #6f6565;
+}
 .demo-raised-button-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
+
 .demo-raised-button {
   margin: 12px;
   margin-left: 20px;
