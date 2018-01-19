@@ -31,6 +31,21 @@ export default new Router({
           name: 'group',
           component: r => require.ensure([], () => r(require("views/group/index")), "group")
         },
+        // {
+        //   path: '/singers',
+        //   name: 'singers',
+        //   component: r => require.ensure([], () => r(require("views/music/singers")), "singers")
+        // },
+        // {
+        //   path: '/singer/:id',
+        //   name: 'singer',
+        //   component: r => require.ensure([], () => r(require("views/music/singer")), "singer")
+        // },
+        // {
+        //   path: '/playing/:id',
+        //   name: 'playing',
+        //   component: r => require.ensure([], () => r(require("views/music/playing")), "playing")
+        // },
         {
           path: '/friend',
           name: 'friend',
