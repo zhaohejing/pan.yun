@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div >
     <mu-flexbox>
       <mu-flexbox-item class="flex-demo">
       </mu-flexbox-item>
@@ -165,9 +165,7 @@ export default {
 .login-container {
   margin-top: 30px;
 }
-.container {
-  background-color: #6f6565;
-}
+
 .demo-raised-button-container {
   display: flex;
   align-items: center;

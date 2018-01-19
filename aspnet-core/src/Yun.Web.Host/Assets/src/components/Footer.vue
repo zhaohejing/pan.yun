@@ -2,7 +2,7 @@
   <mu-paper >
     <mu-bottom-nav :value="bottomNav" shift @change="handleChange">
       <mu-bottom-nav-item to="/resources" value="资源" title="资源" icon="movie"/>
-      <mu-bottom-nav-item to="/group" value="群组" title="群组" icon="group_work"/>
+      <mu-bottom-nav-item to="/singers" value="歌手" title="歌手" icon="group_work"/>
       <mu-bottom-nav-item to="/friend" value="好友" title="好友" icon="games"/>
       <mu-bottom-nav-item to="/my" value="我的" title="我的" icon="account_circle"/>
     </mu-bottom-nav>
